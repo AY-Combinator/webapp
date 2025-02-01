@@ -1,3 +1,5 @@
+import Header from "@/components/molecule/Header";
+
 export default function PublicLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,10 @@ export default function PublicLayout({
 }>) {
   return (
     <div className="grid grid-cols-4 h-full flex-1">
-      <main className="col-span-3 pl-10 pr-6">{children}</main>
+      <main className="col-span-3 pl-10 pr-6">
+        <Header />
+        {children}
+      </main>
       <aside className="col-span-1 bg-background-secondary h-screen sticky top-0 p-6"></aside>
     </div>
   );
