@@ -23,7 +23,7 @@ const ModuleCard = ({ title, color, icon, points }: ModuleCardProps) => {
           <h3 className="text-background text-lg font-archivo-black uppercase leading-none">
             {title}
           </h3>
-          <div className="flex items-center gap-3 text-muted-foreground">
+          <div className="flex items-center gap-x-3 text-muted-foreground flex-wrap">
             <div className="flex items-center gap-1">
               <SketchLogo size={18} weight="light" />
               <span className="text-sm">{clampedPoints} Points</span>
