@@ -12,7 +12,7 @@ export default {
       colors: {
         background: {
           DEFAULT: "hsl(var(--background))",
-          secondary: "hsl(var(--background-secondary))",
+          secondary: "hsl(var(--secondary-background))",
         },
         foreground: "hsl(var(--foreground))",
         card: {
