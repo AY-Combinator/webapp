@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link href="/" aria-label="Go to Homepage" tabIndex={0}>
+    <Link href="/" aria-label="Go to Homepage">
       <Image
         src={LogoImage}
         alt="AY Combinator Logo"
