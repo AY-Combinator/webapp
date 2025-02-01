@@ -7,6 +7,12 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "bg-golden-gradient",
+    "bg-sky-gradient",
+    "bg-orange-gradient",
+    "bg-indigo-gradient",
+  ],
   theme: {
     extend: {
       colors: {
@@ -60,9 +66,19 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-		inter: "var(--font-inter)",
+        inter: "var(--font-inter)",
         archivo: "var(--font-archivo)",
         "archivo-black": "var(--font-archivo-black)",
+      },
+      backgroundImage: {
+        "golden-gradient":
+          "linear-gradient(137.09deg, #D0CB13 3.39%, #DCD72A 23.68%, #F0ED61 36.24%, #DDD82A 47.83%, #D0CB13 100%)",
+        "sky-gradient":
+          "linear-gradient(137.09deg, #72B3C6 3.39%, #8AC7D9 23.68%, #A5DBEB 36.24%, #8AC7D9 47.83%, #72B3C6 100%)",
+        "orange-gradient":
+          "linear-gradient(137.09deg, #DD5217 3.39%, #E96730 23.68%, #F17E4D 36.24%, #E96730 47.83%, #DD5217 100%)",
+        "indigo-gradient":
+          "linear-gradient(137.09deg, #004E60 3.39%, #136E82 23.68%, #388192 36.24%, #136E82 47.83%, #004E60 100%)",
       },
     },
   },
