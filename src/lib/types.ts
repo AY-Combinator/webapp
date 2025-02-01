@@ -7,4 +7,11 @@ type NavigationItem = {
   tabIndex?: number;
 };
 
-export type { NavigationItem };
+type ModuleMock = {
+  title: string;
+  color: "golden" | "sky" | "orange" | "indigo";
+  icon: React.ReactNode;
+  points: number;
+}
+
+export type { NavigationItem, ModuleMock };
