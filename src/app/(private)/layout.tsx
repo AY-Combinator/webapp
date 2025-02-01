@@ -1,4 +1,5 @@
 import Header from "@/components/molecule/Header";
+import MainSidebar from "@/components/molecule/Sidebar/Main";
 
 export default function PublicLayout({
   children,
@@ -11,7 +12,9 @@ export default function PublicLayout({
         <Header />
         {children}
       </main>
-      <aside className="col-span-1 bg-background-secondary h-screen sticky top-0 p-6"></aside>
+      <aside className="col-span-1 bg-background-secondary h-screen sticky top-0 p-6">
+        <MainSidebar />
+      </aside>
     </div>
   );
 }
