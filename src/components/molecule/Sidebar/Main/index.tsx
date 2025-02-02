@@ -2,7 +2,7 @@ import ModuleList from "../../ModuleList";
 
 const MainSidebar = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex h-full flex-col gap-5">
       <div className="flex items-center justify-between gap-3">
         <h2 className="text-lg text-background leading-none font-archivo-black">
           Modules
