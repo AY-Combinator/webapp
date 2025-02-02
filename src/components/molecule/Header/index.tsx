@@ -4,7 +4,7 @@ import { DashboardNavigation } from "@/data/menus/DashboardNavigation";
 
 const Header = () => {
   return (
-    <header className="sticky top-0">
+    <header className="sticky top-0 bg-background/70 backdrop-blur-md z-50">
       <div className="flex justify-between items-center gap-4 py-6">
         <Logo />
         <div className="flex gap-4 items-center">
