@@ -1,12 +1,17 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+import fluid, { extract, fontSize, screens } from "fluid-tailwind";
 
 export default {
   darkMode: ["class"],
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: {
+    files: [
+      "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    extract,
+  },
   safelist: [
     "bg-golden-gradient",
     "bg-sky-gradient",
@@ -14,6 +19,11 @@ export default {
     "bg-indigo-gradient",
   ],
   theme: {
+    fluid: ({ theme }: { theme: (key: string) => string }) => ({
+      defaultScreens: [theme("screens.lg"), theme("screens.2xl")],
+    }),
+    screens,
+    fontSize,
     extend: {
       colors: {
         background: {
@@ -82,5 +92,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate, fluid],
 } satisfies Config;

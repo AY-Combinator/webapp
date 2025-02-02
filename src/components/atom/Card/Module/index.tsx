@@ -12,18 +12,18 @@ const ModuleCard = ({ title, color, icon, points }: ModuleCardProps) => {
   const clampedPoints = Math.max(0, Math.min(points, 42));
   const progressValue = (clampedPoints / 42) * 100;
   return (
-    <div className="border border-solid border-black/30 shadow-sm shadow-black/15 rounded-sm bg-accent-foreground p-1 flex flex-col gap-1">
-      <div className="flex items-center gap-4 p-3">
+    <div className="cursor-pointer border border-solid border-black/30 shadow-sm shadow-black/15 rounded-sm bg-accent-foreground p-1 flex flex-col gap-1">
+      <div className="flex items-center gap-4 ~p-2/3">
         <div
           className={`min-w-16 min-h-16 bg-${color}-gradient rounded-lg border-2 border-solid border-black/15 flex items-center justify-center`}
         >
           {icon}
         </div>
         <div className="flex flex-col gap-2">
-          <h3 className="text-background text-lg font-archivo-black uppercase leading-none">
+          <h3 className="text-background text-base leading-tight font-archivo-black uppercase">
             {title}
           </h3>
-          <div className="flex items-center gap-x-3 text-muted-foreground flex-wrap">
+          <div className="flex items-center ~gap-x-2/3 text-muted-foreground flex-wrap">
             <div className="flex items-center gap-1">
               <SketchLogo size={18} weight="light" />
               <span className="text-sm">{clampedPoints} Points</span>
