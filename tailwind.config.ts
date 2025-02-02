@@ -89,6 +89,8 @@ export default {
           "linear-gradient(137.09deg, #DD5217 3.39%, #E96730 23.68%, #F17E4D 36.24%, #E96730 47.83%, #DD5217 100%)",
         "indigo-gradient":
           "linear-gradient(137.09deg, #004E60 3.39%, #136E82 23.68%, #388192 36.24%, #136E82 47.83%, #004E60 100%)",
+        "sand-sky-gradient":
+          "linear-gradient(180deg, #DDD9D6 30.67%, #72B3C6 91.11%)",
       },
     },
   },
