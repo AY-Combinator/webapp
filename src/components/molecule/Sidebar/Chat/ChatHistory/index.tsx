@@ -9,7 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ChatHistory = () => {
   return (
-    <div className="flex flex-col border-y border-solid border-border py-4 px-3 gap-4">
+    <div className="flex flex-col border-y border-solid border-border py-4 px-3 gap-4 flex-1">
       <h2 className="font-medium pl-3">Chat History</h2>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="today" className="border-none">
