@@ -12,6 +12,14 @@ type ModuleMock = {
   color: "golden" | "sky" | "orange" | "indigo";
   icon: React.ReactNode;
   points: number;
-}
+};
 
-export type { NavigationItem, ModuleMock };
+type FolderItemMock = {
+  title: string;
+  uploaded: boolean;
+  color?: "golden" | "sky" | "orange" | "indigo";
+  icon?: React.ReactNode;
+  url?: string;
+};
+
+export type { NavigationItem, ModuleMock, FolderItemMock };
