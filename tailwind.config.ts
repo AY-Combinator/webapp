@@ -17,6 +17,22 @@ export default {
     "bg-sky-gradient",
     "bg-orange-gradient",
     "bg-indigo-gradient",
+    "bg-sky/30",
+    "bg-orange/30",
+    "bg-golden/30",
+    "bg-indigo/30",
+    "group-hover:text-sky",
+    "group-hover:text-orange",
+    "group-hover:text-golden",
+    "group-hover:text-indigo",
+    "text-sky/80",
+    "text-orange/80",
+    "text-golden/80",
+    "text-indigo/80",
+    "group-hover:border-sky",
+    "group-hover:border-orange",
+    "group-hover:border-golden",
+    "group-hover:border-indigo",
   ],
   theme: {
     fluid: ({ theme }: { theme: (key: string) => string }) => ({
@@ -26,6 +42,10 @@ export default {
     fontSize,
     extend: {
       colors: {
+        sky: "#72B3C6",
+        orange: "#DF5217",
+        golden: "#D0CB13",
+        indigo: "#004E60",
         background: {
           DEFAULT: "hsl(var(--background))",
           secondary: "hsl(var(--secondary-background))",
@@ -91,6 +111,28 @@ export default {
           "linear-gradient(137.09deg, #004E60 3.39%, #136E82 23.68%, #388192 36.24%, #136E82 47.83%, #004E60 100%)",
         "sand-sky-gradient":
           "linear-gradient(180deg, #DDD9D6 30.67%, #72B3C6 91.11%)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
