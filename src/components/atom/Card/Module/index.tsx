@@ -1,4 +1,5 @@
 import { Progress } from "@/components/ui/progress";
+import { calculateProgressPercentage } from "@/lib/helpers";
 import { CheckCircle, SketchLogo } from "@phosphor-icons/react/dist/ssr";
 
 interface ModuleCardProps {
@@ -10,7 +11,10 @@ interface ModuleCardProps {
 
 const ModuleCard = ({ title, color, icon, points }: ModuleCardProps) => {
   const clampedPoints = Math.max(0, Math.min(points, 42));
-  const progressValue = (clampedPoints / 42) * 100;
+  const progressValue = calculateProgressPercentage({
+    points: clampedPoints,
+    maxPoints: 42,
+  });
   return (
     <div className="cursor-pointer border border-solid border-black/30 shadow-sm shadow-black/15 rounded-sm bg-accent-foreground p-1 flex flex-col gap-1">
       <div className="flex items-center gap-4 ~p-2/3">
