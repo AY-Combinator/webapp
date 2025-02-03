@@ -9,6 +9,7 @@ const ModuleList = () => {
         {ModulesMockData.map((module, index) => (
           <ModuleCard
             key={index}
+            slug={module.slug}
             color={module.color}
             title={module.title}
             icon={module.icon}

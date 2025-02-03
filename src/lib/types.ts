@@ -9,6 +9,7 @@ type NavigationItem = {
 
 type ModuleMock = {
   title: string;
+  slug: string;
   color: "golden" | "sky" | "orange" | "indigo";
   icon: React.ReactNode;
   points: number;
