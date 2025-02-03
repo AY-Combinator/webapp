@@ -8,7 +8,7 @@ interface ChatFilesProps {
 
 const ChatFiles = ({ files }: ChatFilesProps) => {
   return (
-    <div className="flex flex-col py-4 px-3 gap-4">
+    <div className="flex flex-col py-4 px-3 gap-4 w-full border-t border-solid border-border ">
       <h2 className="font-medium pl-3">Files ({files.length})</h2>
       {files.length > 0 && (
         <ScrollArea className="w-full">
