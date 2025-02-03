@@ -6,7 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ChatSidebar = () => {
   return (
-    <div className="flex flex-col w-full h-full justify-between">
+    <div className="flex flex-col w-full h-full justify-between overflow-hidden">
       <ScrollArea className="h-auto w-full">
         <div className="flex flex-col h-full">
           <ChatTitle title="Business Model Canvas" points={21} maxPoints={42} />
