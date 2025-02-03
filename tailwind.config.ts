@@ -111,6 +111,8 @@ export default {
           "linear-gradient(137.09deg, #004E60 3.39%, #136E82 23.68%, #388192 36.24%, #136E82 47.83%, #004E60 100%)",
         "sand-sky-gradient":
           "linear-gradient(180deg, #DDD9D6 30.67%, #72B3C6 91.11%)",
+        "sand-orange-gradient":
+          "linear-gradient(180deg, #DDD9D6 30.67%, #DF5217 91.11%)",
       },
       keyframes: {
         "accordion-down": {

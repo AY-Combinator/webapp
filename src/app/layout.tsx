@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Archivo, Archivo_Black } from "next/font/google";
 import "./globals.scss";
-import { Toaster } from "@/components/ui/sonner";
+import Providers from "./providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,8 +35,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${archivo.variable} ${archivoBlack.variable} ${inter.className} antialiased`}
       >
-        {children}
-        <Toaster />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
