@@ -7,6 +7,7 @@ const protectedRoutes = [
   "/leaderboard",
   "/profile",
   "/settings",
+  "/module",
 ];
 
 export async function middleware(req: NextRequest) {
