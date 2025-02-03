@@ -1,9 +1,19 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { ArrowBendRightUp, Paperclip } from "@phosphor-icons/react/dist/ssr";
 
-const ChatInput = () => {
+interface ChatInputProps {
+  className?: string;
+}
+
+const ChatInput = ({ className }: ChatInputProps) => {
   return (
-    <div className="flex flex-col my-6 gap-1 items-end px-4 py-2 rounded-xl border border-solid border-border bg-background">
+    <div
+      className={cn(
+        "flex flex-col gap-1 items-end px-4 py-2 rounded-xl border border-solid border-border bg-background",
+        className
+      )}
+    >
       <input
         type="text"
         placeholder="Type your correction here..."
