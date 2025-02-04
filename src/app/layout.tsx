@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Archivo, Archivo_Black } from "next/font/google";
+import {
+  Inter,
+  Archivo,
+  Archivo_Black,
+  Source_Serif_4,
+} from "next/font/google";
 import "./globals.scss";
 import Providers from "./providers";
 
@@ -19,6 +24,11 @@ const archivoBlack = Archivo_Black({
   subsets: ["latin"],
 });
 
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "AY Combinator",
   description:
@@ -33,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${archivo.variable} ${archivoBlack.variable} ${inter.className} antialiased`}
+        className={`${inter.variable} ${archivo.variable} ${archivoBlack.variable} ${inter.className} ${sourceSerif.variable} antialiased`}
       >
         <Providers>{children}</Providers>
       </body>

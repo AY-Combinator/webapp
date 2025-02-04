@@ -1,11 +1,12 @@
 import SectionWrapper from "@/components/atom/SectionWrapper";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Tags from "../Tags";
 
 const Overview = () => {
   return (
     <SectionWrapper className="flex-row gap-10 h-1/2">
       <div className="w-1/3"></div>
-      <div className="flex flex-col gap-6 overflow-hidden w-2/3 py-3">
+      <div className="flex flex-col gap-4 overflow-hidden w-2/3 py-3 justify-between">
         <ScrollArea className="w-full">
           <div className="flex flex-col gap-4 text-sm pr-2">
             <h2 className="font-archivo-black text-lg leading-none">
@@ -34,6 +35,7 @@ const Overview = () => {
             </p>
           </div>
         </ScrollArea>
+        <Tags tags={["web3", "blockchain", "crypto wallet"]} />
       </div>
     </SectionWrapper>
   );

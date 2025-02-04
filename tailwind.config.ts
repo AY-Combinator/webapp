@@ -109,6 +109,7 @@ export default {
         inter: "var(--font-inter)",
         archivo: "var(--font-archivo)",
         "archivo-black": "var(--font-archivo-black)",
+        "source-serif": "var(--font-source-serif)",
       },
       backgroundImage: {
         "golden-gradient":
