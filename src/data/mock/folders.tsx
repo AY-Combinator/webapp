@@ -17,7 +17,31 @@ const FoldersMockData: FolderItemMock[] = [
     icon: <FlagCheckered size={32} />,
   },
   {
-    title: "Framework name",
+    title: "Vision Statement",
+    uploaded: false,
+  },
+  {
+    title: "User Persona",
+    uploaded: false,
+  },
+  {
+    title: "Customer Journey",
+    uploaded: false,
+  },
+  {
+    title: "Jobs To Be Done",
+    uploaded: false,
+  },
+  {
+    title: "SWOT Analysis",
+    uploaded: false,
+  },
+  {
+    title: "User Stories",
+    uploaded: false,
+  },
+  {
+    title: "Pitch Deck",
     uploaded: false,
   },
 ];
