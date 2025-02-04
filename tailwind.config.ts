@@ -54,6 +54,12 @@ export default {
           DEFAULT: "hsl(var(--background))",
           secondary: "hsl(var(--secondary-background))",
         },
+        podium: {
+          first: "#D0CB13",
+          second: "#E2DE3F",
+          third: "#EBE991",
+          text: "#94910B",
+        },
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -117,6 +123,8 @@ export default {
           "linear-gradient(180deg, #DDD9D6 30.67%, #72B3C6 91.11%)",
         "sand-orange-gradient":
           "linear-gradient(180deg, #DDD9D6 30.67%, #DF5217 91.11%)",
+        "golden-sand-gradient":
+          "linear-gradient(180.9deg, #E9E5E2 66.02%, #E2DDAA 78.21%, #DBD774 89.48%, #D6D14A 100.04%, #D3CE2C 110.44%, #D0CB19 119.97%, #D0CB13 126.03%)",
       },
       keyframes: {
         "accordion-down": {
@@ -139,6 +147,13 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      maxWidth: {
+        "leadership-container": "41.625rem",
+        "podium-container": "35.063rem",
+      },
+      height: {
+        leaderboard: "27rem",
       },
     },
   },
