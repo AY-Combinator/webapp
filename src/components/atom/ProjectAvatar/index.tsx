@@ -15,7 +15,7 @@ const ProjectAvatar = ({
   const imageSize = orientation === "horizontal" ? 60 : 92;
   return (
     <div
-      className={cn("flex gap-3 items-center", {
+      className={cn("flex gap-3 items-center z-10", {
         "flex-col": orientation === "vertical",
       })}
     >
@@ -30,7 +30,13 @@ const ProjectAvatar = ({
       >
         <Image src={image} width={imageSize} height={imageSize} alt={title} />
       </div>
-      <span className="font-bold text-base">{title}</span>
+      <div
+        className={cn("font-bold text-base", {
+          "w-[90%] text-center": orientation === "vertical",
+        })}
+      >
+        {title}
+      </div>
     </div>
   );
 };
