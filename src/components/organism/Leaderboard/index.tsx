@@ -2,7 +2,6 @@ import PlacementTable from "@/components/molecule/Leaderboard/PlacementTable";
 import PodiumBox from "@/components/molecule/Leaderboard/PodiumBox";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { leadershipPlacementData } from "@/data/mock/leadership";
-import { LeadershipPlacement } from "@/lib/types";
 
 const Leaderboard = () => {
   const orderedPlacements = [

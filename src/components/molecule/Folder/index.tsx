@@ -10,7 +10,7 @@ const Folder = ({
   color,
   icon,
   title,
-  url,
+  // url,
 }: FolderItemMock) => {
   return (
     <div className="relative w-max cursor-pointer group">
