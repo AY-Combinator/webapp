@@ -11,7 +11,7 @@ const SectionWrapper = ({
   return (
     <section
       className={cn(
-        "flex p-6 flex-col gap-6 bg-white overflow-hidden border border-solid border-border shadow-lg w-full rounded",
+        "flex p-6 flex-col gap-6 bg-white overflow-hidden border border-solid border-border shadow-lg w-full rounded-lg",
         className
       )}
     >

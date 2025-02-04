@@ -3,9 +3,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Overview = () => {
   return (
-    <SectionWrapper className="flex-row gap-10">
-      <div className="w-2/5"></div>
-      <div className="flex flex-col gap-6 overflow-hidden w-full">
+    <SectionWrapper className="flex-row gap-10 h-1/2">
+      <div className="w-1/3"></div>
+      <div className="flex flex-col gap-6 overflow-hidden w-2/3 py-3">
         <ScrollArea className="w-full">
           <div className="flex flex-col gap-4 text-sm pr-2">
             <h2 className="font-archivo-black text-lg leading-none">
