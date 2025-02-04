@@ -23,4 +23,12 @@ type FolderItemMock = {
   url?: string;
 };
 
-export type { NavigationItem, ModuleMock, FolderItemMock };
+type LeadershipPlacement = {
+  title: string;
+  image: string;
+  placement: number;
+  points: number;
+  invested: boolean;
+};
+
+export type { NavigationItem, ModuleMock, FolderItemMock, LeadershipPlacement };
