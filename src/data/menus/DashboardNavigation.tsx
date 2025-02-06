@@ -2,13 +2,6 @@ import { NavigationItem } from "@/lib/types";
 
 export const DashboardNavigation: NavigationItem[] = [
   {
-    label: "All Projects",
-    href: "/all-projects",
-    newTab: false,
-    ariaLabel: "Go to All Projects",
-    external: false,
-  },
-  {
     label: "Leaderboard",
     href: "/leaderboard",
     newTab: false,

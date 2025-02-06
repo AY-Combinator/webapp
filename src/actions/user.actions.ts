@@ -2,12 +2,13 @@
 
 import { User } from "@privy-io/react-auth";
 import prisma from "../../prisma/client";
-
 export const createUser = async (data: User) => {
   try {
+    const userId = data.id.replace(/^did:privy:/, "");
+
     const newUser = await prisma.user.create({
       data: {
-        id: data.id,
+        id: userId,
         email: data.email?.address || "",
         walletAddress: data.wallet?.address || "",
         projects: {
