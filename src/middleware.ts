@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrivyClient } from "@privy-io/server-auth";
-import { cookies } from "next/headers";
 
 const protectedRoutes = [
   "/dashboard",

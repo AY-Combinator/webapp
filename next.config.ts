@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
       },
+      {
+        protocol: "https",
+        hostname: "ay-combinator.s3.us-east-1.amazonaws.com",
+      },
     ],
   },
 };

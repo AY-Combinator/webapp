@@ -8,4 +8,8 @@ const calculateProgressPercentage = ({
   return (points / maxPoints) * 100;
 };
 
-export { calculateProgressPercentage };
+const sanitizeFileName = (fileName: string) => {
+  return fileName.replace(/[^a-zA-Z0-9-_]/g, "_");
+};
+
+export { calculateProgressPercentage, sanitizeFileName };
