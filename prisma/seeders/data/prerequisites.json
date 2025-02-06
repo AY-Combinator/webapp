@@ -1,0 +1,278 @@
+[
+  {
+    "moduleName": "Risks & Hypothesis",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "User Interviews",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "User Persona",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "User Journey",
+    "prerequisiteName": "User Persona"
+  },
+  {
+    "moduleName": "Market Research",
+    "prerequisiteName": "User Journey"
+  },
+  {
+    "moduleName": "Competitor Analysis",
+    "prerequisiteName": "Market Research"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "Risks & Hypothesis"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "User Interviews"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "User Persona"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "User Journey"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "Market Research"
+  },
+  {
+    "moduleName": "Jobs-To-Be-Done",
+    "prerequisiteName": "Competitor Analysis"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "Risks & Hypothesis"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "User Interviews"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "User Persona"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "User Journey"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "Market Research"
+  },
+  {
+    "moduleName": "Business Model",
+    "prerequisiteName": "Competitor Analysis"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "Problem Framing"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "Risks & Hypothesis"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "User Interviews"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "User Persona"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "User Journey"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "Market Research"
+  },
+  {
+    "moduleName": "MVP Development",
+    "prerequisiteName": "Competitor Analysis"
+  },
+  {
+    "moduleName": "Tech Architecture",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Risk Reevaluation*",
+    "prerequisiteName": "Business Model"
+  },
+  {
+    "moduleName": "User Experience",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Roadmapping",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "Jobs-To-Be-Done"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "Business Model"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "Tech Architecture"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "Risk Reevaluation*"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "User Experience"
+  },
+  {
+    "moduleName": "Brand Positioning",
+    "prerequisiteName": "Roadmapping"
+  },
+  {
+    "moduleName": "GTM",
+    "prerequisiteName": "Brand Positioning"
+  },
+  {
+    "moduleName": "Community building",
+    "prerequisiteName": "Brand Positioning"
+  },
+  {
+    "moduleName": "Content Strategy",
+    "prerequisiteName": "Brand Positioning"
+  },
+  {
+    "moduleName": "Content Strategy",
+    "prerequisiteName": "GTM"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "Jobs-To-Be-Done"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "Business Model"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "Tech Architecture"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "Risk Reevaluation*"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "User Experience"
+  },
+  {
+    "moduleName": "Sales",
+    "prerequisiteName": "Roadmapping"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "Jobs-To-Be-Done"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "Business Model"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "MVP Development"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "Tech Architecture"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "Risk Reevaluation*"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "User Experience"
+  },
+  {
+    "moduleName": "Measuring Impact (KPIs)",
+    "prerequisiteName": "Roadmapping"
+  },
+  {
+    "moduleName": "Team",
+    "prerequisiteName": "Roadmapping"
+  },
+  {
+    "moduleName": "Pitch Prep",
+    "prerequisiteName": "Team"
+  },
+  {
+    "moduleName": "Scaling Strategies",
+    "prerequisiteName": "Roadmapping"
+  },
+  {
+    "moduleName": "Scaling Strategies",
+    "prerequisiteName": "GTM"
+  },
+  {
+    "moduleName": "Scaling Strategies",
+    "prerequisiteName": "Sales"
+  },
+  {
+    "moduleName": "Scaling Strategies",
+    "prerequisiteName": "Team"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "Brand Positioning"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "GTM"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "Community building"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "Content Strategy"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "Sales"
+  },
+  {
+    "moduleName": "Exit Strategy",
+    "prerequisiteName": "Measuring Impact (KPIs)"
+  },
+  {
+    "moduleName": "Investment Readiness",
+    "prerequisiteName": "Exit Strategy"
+  }
+]

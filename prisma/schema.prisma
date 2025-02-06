@@ -54,11 +54,12 @@ model Module {
   description String?
   difficulty  ModuleDifficulty
   maxScore    Int
+  order       Int              @unique
   chapter     Chapter          @relation(fields: [chapterId], references: [id], onDelete: Cascade)
   chapterId   String
 
-  prerequisites   Module[]          @relation("ModulePrerequisites")
-  requiredFor     Module[]          @relation("ModulePrerequisites")
+  prerequisites   ModulePrerequisite[] @relation("ModulePrerequisites")
+  requiredModules ModulePrerequisite[] @relation("ModulePrerequisiteModule")
   ProjectProgress ProjectProgress[]
 }
 
@@ -66,6 +67,16 @@ enum ModuleDifficulty {
   Beginner
   Intermediate
   Advanced
+}
+
+model ModulePrerequisite {
+  module             Module @relation("ModulePrerequisites", fields: [moduleId], references: [id], onDelete: Cascade)
+  moduleId           String
+  prerequisiteId     String
+  prerequisiteModule Module @relation("ModulePrerequisiteModule", fields: [prerequisiteId], references: [id])
+
+  @@unique([moduleId, prerequisiteId])
+  @@map("module_prerequisites")
 }
 
 model ProjectProgress {
