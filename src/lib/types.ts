@@ -31,4 +31,23 @@ type LeadershipPlacement = {
   invested: boolean;
 };
 
-export type { NavigationItem, ModuleMock, FolderItemMock, LeadershipPlacement };
+type ProjectData = {
+  id: string;
+  title: string | null;
+  featuredImage: string | null;
+  shortDescription: string | null;
+  longDescription: string | null;
+  tags: string[];
+  cumulativeProgress: {
+    earnedPoints: number;
+    totalPoints: number;
+  };
+};
+
+export type {
+  NavigationItem,
+  ModuleMock,
+  FolderItemMock,
+  LeadershipPlacement,
+  ProjectData,
+};

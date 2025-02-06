@@ -1,5 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 
+declare global {
+  var totalModulePoints: number | undefined;
+}
 /**
  * Whenever a new user is created and project initialized, automatically create 0 state for progress.
  */
@@ -59,5 +62,4 @@ const prisma = new PrismaClient().$extends({
     },
   },
 });
-
 export default prisma;
