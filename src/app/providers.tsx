@@ -13,6 +13,11 @@ export default function Providers({ children }: { children: ReactNode }) {
           theme: "#eeeae8",
           accentColor: "#DF5217",
         },
+        embeddedWallets: {
+          ethereum: {
+            createOnLogin: "off",
+          },
+        },
       }}
     >
       {children}
