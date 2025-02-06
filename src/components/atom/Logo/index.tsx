@@ -1,15 +1,15 @@
 import Image from "next/image";
-import LogoImage from "@/assets/images/temporary-logo.svg";
+import LogoImage from "@/assets/images/AY-combinator-logo.png";
 import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Link href="/" aria-label="Go to Homepage">
+    <Link href="/dashboard" aria-label="Go to Dashboard">
       <Image
         src={LogoImage}
         alt="AY Combinator Logo"
-        width={154}
-        height={28}
+        width={160}
+        height={46}
         priority
       />
     </Link>
