@@ -22,15 +22,61 @@ model User {
 }
 
 model Project {
-  id            String   @id @default(uuid())
-  title         String?
-  featuredImage String?  @map("featured_image")
-  tags          String[]
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
+  id               String   @id @default(uuid())
+  title            String?
+  featuredImage    String?  @map("featured_image")
+  shortDescription String?  @map("short_description")
+  longDescription  String?  @map("long_description")
+  tags             String[]
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
-  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String
+  User            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  ProjectProgress ProjectProgress[]
 
   @@map("projects")
+}
+
+model Chapter {
+  id    String @id @default(uuid())
+  name  String
+  order Int    @unique
+
+  modules Module[]
+
+  @@map("chapters")
+}
+
+model Module {
+  id          String           @id @default(uuid())
+  name        String
+  description String?
+  difficulty  ModuleDifficulty
+  maxScore    Int
+  chapter     Chapter          @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId   String
+
+  prerequisites   Module[]          @relation("ModulePrerequisites")
+  requiredFor     Module[]          @relation("ModulePrerequisites")
+  ProjectProgress ProjectProgress[]
+}
+
+enum ModuleDifficulty {
+  Beginner
+  Intermediate
+  Advanced
+}
+
+model ProjectProgress {
+  id        String  @id @default(uuid())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  module    Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  moduleId  String
+  score     Int     @default(0)
+  completed Boolean @default(false)
+
+  @@unique([projectId, moduleId])
+  @@map("project_progress")
 }
