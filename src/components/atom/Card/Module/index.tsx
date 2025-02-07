@@ -14,8 +14,8 @@ type ModuleCardProps = ModuleData & {
 };
 
 const ModuleCard = ({
-  id,
   name,
+  slug,
   difficulty,
   maxScore,
   score,
@@ -30,12 +30,12 @@ const ModuleCard = ({
   });
   const pathname = usePathname();
   return (
-    <Link href={`/module/${id}`} className="w-full">
+    <Link href={`/module/${slug}`} className="w-full">
       <div
         className={cn(
           "cursor-pointer border border-solid border-black/30 shadow-sm shadow-black/15 rounded-sm bg-accent-foreground p-1 flex flex-col gap-1 transition-all duration-200 ease-in-out",
           `hover:bg-${color}/30`,
-          pathname.includes(id) && `bg-${color}/30`
+          pathname.includes(slug) && `bg-${color}/30`
         )}
       >
         <div className="flex items-center gap-4 ~p-2/3">
