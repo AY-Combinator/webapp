@@ -1,12 +1,14 @@
 "use client";
 
+import { logoutUser } from "@/actions/user.actions";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "@privy-io/react-auth";
 import { redirect } from "next/navigation";
 
 const LogoutButton = () => {
   const { logout } = useLogout({
-    onSuccess: () => {
+    onSuccess: async () => {
+      await logoutUser();
       redirect("/");
     },
   });
