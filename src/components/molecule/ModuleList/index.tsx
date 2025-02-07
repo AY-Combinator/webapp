@@ -6,7 +6,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ModulesMockData } from "@/data/mock/modules";
 import { ChapterData } from "@/lib/types";
 import {
   FlagCheckered,
@@ -17,7 +16,7 @@ import {
 import { ReactNode } from "react";
 import Chapter from "../Chapter";
 
-const moduleStyles: {
+export const moduleStyles: {
   color: "golden" | "sky" | "orange" | "indigo";
   icon: ReactNode;
 }[] = [
@@ -28,7 +27,6 @@ const moduleStyles: {
 ];
 
 const ModuleList = ({ chapterData }: { chapterData: ChapterData[] }) => {
-  console.log(chapterData);
   return (
     <ScrollArea className="h-full w-full px-2">
       <div className="flex flex-col gap-4 h-full w-full max-w-full">
