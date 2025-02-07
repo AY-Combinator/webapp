@@ -15,7 +15,7 @@ type ModuleMock = {
   points: number;
 };
 
-type FolderItemMock = {
+type FolderItem = {
   title: string;
   color?: "golden" | "sky" | "orange" | "indigo";
   icon?: React.ReactNode;
@@ -67,7 +67,7 @@ type ChapterData = {
 export type {
   NavigationItem,
   ModuleMock,
-  FolderItemMock,
+  FolderItem,
   LeadershipPlacement,
   ProjectData,
   ModuleData,

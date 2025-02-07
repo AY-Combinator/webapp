@@ -4,7 +4,7 @@ import ActiveFolder from "@/assets/images/folder-active.svg";
 import InactiveFolder from "@/assets/images/folder-inactive.svg";
 import { cn } from "@/lib/utils";
 import { CircleNotch, UploadSimple } from "@phosphor-icons/react/dist/ssr";
-import { FolderItemMock } from "@/lib/types";
+import { FolderItem } from "@/lib/types";
 import { useRef, useState } from "react";
 import { uploadModuleFIleToS3 } from "@/actions/upload.actions";
 import { toast } from "sonner";
@@ -17,7 +17,7 @@ const Folder = ({
   slug,
   moduleId,
   projectId,
-}: FolderItemMock) => {
+}: FolderItem) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [fileUrl, setFileUrl] = useState(url);

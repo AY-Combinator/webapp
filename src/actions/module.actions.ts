@@ -101,6 +101,7 @@ export async function getModules(): Promise<GetModulesResponse> {
 export interface ModuleProgress {
   score: number;
   completed: boolean;
+  deliverable: string | null;
 }
 
 export interface RequiredModule {
@@ -177,6 +178,7 @@ export async function getModuleBySlug(
         select: {
           score: true,
           completed: true,
+          deliverable: true,
         },
       });
     }
