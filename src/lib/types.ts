@@ -44,10 +44,29 @@ type ProjectData = {
   };
 };
 
+type ModuleData = {
+  id: string;
+  name: string;
+  description: string | null;
+  difficulty: string;
+  maxScore: number;
+  order: number;
+  score: number;
+  completed: boolean;
+};
+
+type ChapterData = {
+  chapterId: string;
+  chapterName: string;
+  modules: ModuleData[];
+};
+
 export type {
   NavigationItem,
   ModuleMock,
   FolderItemMock,
   LeadershipPlacement,
   ProjectData,
+  ModuleData,
+  ChapterData,
 };

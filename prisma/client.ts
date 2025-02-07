@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 declare global {
   var totalModulePoints: number | undefined;
+  var totalModuleCount: number | undefined;
 }
 /**
  * Whenever a new user is created and project initialized, automatically create 0 state for progress.
