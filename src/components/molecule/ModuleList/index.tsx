@@ -45,8 +45,6 @@ const ModuleList = ({ chapterData }: { chapterData: ChapterData[] }) => {
                 <AccordionTrigger className="hover:no-underline">
                   <Chapter
                     name={chapter.chapterName}
-                    color={moduleStyles[index].color}
-                    icon={moduleStyles[index].icon}
                     order={index + 1}
                   />
                 </AccordionTrigger>

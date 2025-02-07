@@ -5,14 +5,14 @@ import { Upload } from "@aws-sdk/lib-storage";
 import prisma from "../../prisma/client";
 
 const s3Client = new S3Client({
-  region: process.env.AWS_S3_REGION,
+  region: process.env.AY_AWS_S3_REGION,
   credentials: {
-    accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.AY_AWS_S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AY_AWS_S3_SECRET_ACCESS_KEY!,
   },
 });
 
-const BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME!;
+const BUCKET_NAME = process.env.AY_AWS_S3_BUCKET_NAME!;
 
 export async function uploadProjectImageToS3(
   file: File,

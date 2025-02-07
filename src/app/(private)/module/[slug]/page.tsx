@@ -3,8 +3,12 @@ import Chat from "@/components/organism/Chat";
 
 import { notFound } from "next/navigation";
 
-const ModuleRoute = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = await params;
+const ModuleRoute = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const slug = (await params).slug;
   const moduleData = await getModuleBySlug(slug);
 
   if (!moduleData) {

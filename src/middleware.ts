@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrivyClient } from "@privy-io/server-auth";
 import privy from "./lib/privy";
 
 const protectedRoutes = [

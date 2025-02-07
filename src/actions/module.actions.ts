@@ -23,7 +23,7 @@ export async function getModules(): Promise<GetModulesResponse> {
     return { success: false, status: 403, message: "Unauthorized", data: null };
   }
   try {
-    let totalModules = global.totalModuleCount;
+    const totalModules = global.totalModuleCount;
     if (!totalModules) {
       const modulesCount = await prisma.module.count();
       global.totalModuleCount = modulesCount;
@@ -141,7 +141,7 @@ export async function getModuleBySlug(
   }
 
   try {
-    const module = await prisma.module.findFirst({
+    const moduleItem = await prisma.module.findFirst({
       where: { slug },
       include: {
         requiredModules: {
@@ -156,7 +156,7 @@ export async function getModuleBySlug(
       },
     });
 
-    if (!module) {
+    if (!moduleItem) {
       console.error(`Module at ${slug} not found`);
       return {
         success: false,
@@ -172,7 +172,7 @@ export async function getModuleBySlug(
     if (projectId) {
       moduleProgress = await prisma.projectProgress.findFirst({
         where: {
-          moduleId: module.id,
+          moduleId: moduleItem.id,
           projectId: projectId,
         },
         select: {
@@ -186,7 +186,7 @@ export async function getModuleBySlug(
     return {
       success: true,
       module: {
-        ...module,
+        ...moduleItem,
         moduleProgress,
       },
     };
