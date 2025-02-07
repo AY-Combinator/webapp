@@ -17,10 +17,12 @@ type ModuleMock = {
 
 type FolderItemMock = {
   title: string;
-  uploaded: boolean;
   color?: "golden" | "sky" | "orange" | "indigo";
   icon?: React.ReactNode;
-  url?: string;
+  url: string | null;
+  slug: string;
+  moduleId: string;
+  projectId: string;
 };
 
 type LeadershipPlacement = {
@@ -47,6 +49,7 @@ type ProjectData = {
 type ModuleData = {
   id: string;
   name: string;
+  slug: string;
   description: string | null;
   difficulty: string;
   maxScore: number;

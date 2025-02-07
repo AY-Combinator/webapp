@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 import ModuleList from "../../ModuleList";
 import { Button } from "@/components/ui/button";
 import { ArrowElbowDownLeft } from "@phosphor-icons/react/dist/ssr";
-import { ModulesResponseData } from "@/actions/project.actions";
+import { ModulesResponseData } from "@/actions/module.actions";
 
 const MainSidebar = ({
   modulesData,

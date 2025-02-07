@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { uploadFileToS3 } from "@/actions/upload.actions";
+import { uploadProjectImageToS3 } from "@/actions/upload.actions";
 import { CircleNotch } from "@phosphor-icons/react/dist/ssr";
 import { toast } from "sonner";
 interface DropzoneProps {
@@ -27,7 +27,11 @@ const ImageDropzone = ({ currentImage, projectId }: DropzoneProps) => {
       setError(null);
 
       const file = acceptedFiles[0];
-      const { url } = await uploadFileToS3(file, projectId, currentImage);
+      const { url } = await uploadProjectImageToS3(
+        file,
+        projectId,
+        currentImage
+      );
       if (url) {
         setImagePreview(url);
       } else {
