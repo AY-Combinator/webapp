@@ -1,21 +1,90 @@
+"use client";
 import Image from "next/image";
 import ActiveFolder from "@/assets/images/folder-active.svg";
 import InactiveFolder from "@/assets/images/folder-inactive.svg";
 import { cn } from "@/lib/utils";
-import { UploadSimple } from "@phosphor-icons/react/dist/ssr";
+import { CircleNotch, UploadSimple } from "@phosphor-icons/react/dist/ssr";
 import { FolderItemMock } from "@/lib/types";
+import { useRef, useState } from "react";
+import { uploadModuleFIleToS3 } from "@/actions/upload.actions";
+import { toast } from "sonner";
 
 const Folder = ({
-  uploaded = false,
   color,
   icon,
   title,
-  // url,
+  url,
+  slug,
+  moduleId,
+  projectId,
 }: FolderItemMock) => {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [fileUrl, setFileUrl] = useState(url);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const uploadFile = async (file: File) => {
+    setIsLoading(true);
+    const { url: newFileUrl } = await uploadModuleFIleToS3(
+      file,
+      projectId,
+      slug,
+      moduleId,
+      fileUrl
+    );
+    if (newFileUrl) {
+      setFileUrl(newFileUrl);
+    } else {
+      toast.error("Upload failed, please try again.");
+    }
+    setIsLoading(false);
+  };
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      await uploadFile(file);
+    }
+  };
+
+  const handleClick = () => {
+    if (fileUrl) {
+      window.open(fileUrl, "_blank");
+    } else {
+      fileInputRef.current?.click();
+    }
+  };
+
+  const handleDrop = async (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setIsDragging(false);
+    const file = event.dataTransfer.files?.[0];
+    if (file) {
+      await uploadFile(file);
+    }
+  };
+
   return (
-    <div className="relative w-max cursor-pointer group">
+    <div
+      className={cn("relative w-max cursor-pointer group")}
+      onClick={handleClick}
+      onDrop={handleDrop}
+      onDragOver={(e) => {
+        e.preventDefault();
+        setIsDragging(true);
+      }}
+      onDragLeave={() => setIsDragging(false)}
+    >
+      <input
+        type="file"
+        ref={fileInputRef}
+        className="hidden"
+        onChange={handleFileChange}
+      />
       <Image
-        src={uploaded ? ActiveFolder : InactiveFolder}
+        src={fileUrl ? ActiveFolder : InactiveFolder}
         alt="Folder background"
         width={178}
         height={164}
@@ -26,7 +95,8 @@ const Folder = ({
             className={cn(
               "font-bold text-sm transition-all duration-200 ease-in-out",
               {
-                "text-black/25 group-hover:text-black/70": !uploaded,
+                "text-black/25 group-hover:text-black/70": !fileUrl,
+                "text-black-70": isDragging,
               }
             )}
           >
@@ -38,15 +108,24 @@ const Folder = ({
               `group-hover:border-${color} group-hover:text-${color}`,
               {
                 "bg-background text-background-secondary/30 group-hover:border-background-secondary/70 group-hover:text-background-secondary/70":
-                  !uploaded,
+                  !fileUrl,
+                "border-background-secondary/70 text-background-secondary/70":
+                  isDragging,
               }
             )}
           >
-            {uploaded ? icon : <UploadSimple size={32} />}
+            {isLoading ? (
+              <CircleNotch className="h-6 w-6 animate-spin" />
+            ) : fileUrl ? (
+              icon
+            ) : (
+              <UploadSimple size={32} />
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default Folder;
