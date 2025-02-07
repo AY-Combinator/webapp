@@ -1,10 +1,10 @@
 "use server";
 
-import { ChapterData, ProjectData } from "@/lib/types";
+import { ProjectData } from "@/lib/types";
 import prisma from "../../prisma/client";
-import { cookies } from "next/headers";
 import { Project } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import { getUserId } from "./user.actions";
 
 interface UserProjectResponse {
   success: boolean;
@@ -20,8 +20,7 @@ interface UserProjectResponse {
  */
 
 export async function getUserProject(): Promise<UserProjectResponse> {
-  const cookieStore = await cookies();
-  const userId = cookieStore.get("userId")?.value;
+  const userId = await getUserId();
 
   if (!userId) {
     return { success: false, status: 403, message: "Unauthorized" };
@@ -111,94 +110,17 @@ export async function updateProject({
   }
 }
 
-export interface ModulesResponseData {
-  totalModules?: number;
-  completedModules?: number;
-  modulesByChapters?: ChapterData[];
-}
-interface GetModulesResponse {
-  success: boolean;
-  data: ModulesResponseData | null;
-  status?: number;
-  message?: string;
-}
-export async function getModules(): Promise<GetModulesResponse> {
-  const cookieStore = await cookies();
-  const userId = cookieStore.get("userId")?.value;
-
+export async function getProjectId() {
+  const userId = await getUserId();
   if (!userId) {
-    return { success: false, status: 403, message: "Unauthorized", data: null };
+    return null;
   }
-  try {
-    let totalModules = global.totalModuleCount;
-    if (!totalModules) {
-      const modulesCount = await prisma.module.count();
-      global.totalModuleCount = modulesCount;
-    }
+  const project = await prisma.project.findFirst({
+    where: { userId },
+  });
 
-    const completedModules = await prisma.projectProgress.count({
-      where: {
-        project: {
-          userId,
-        },
-        completed: true,
-      },
-    });
-
-    const chaptersWithModules = await prisma.chapter.findMany({
-      select: {
-        id: true,
-        name: true,
-        order: true,
-        modules: {
-          select: {
-            id: true,
-            name: true,
-            description: true,
-            difficulty: true,
-            maxScore: true,
-            order: true,
-            ProjectProgress: {
-              where: { project: { userId } },
-              select: { score: true, completed: true },
-            },
-          },
-          orderBy: { order: "asc" },
-        },
-      },
-      orderBy: { order: "asc" },
-    });
-
-    const modulesByChapters = chaptersWithModules.map((chapter) => ({
-      chapterId: chapter.id,
-      chapterName: chapter.name,
-      modules: chapter.modules.map((module) => ({
-        id: module.id,
-        name: module.name,
-        description: module.description,
-        difficulty: module.difficulty,
-        maxScore: module.maxScore,
-        order: module.order,
-        score:
-          module.ProjectProgress.length > 0
-            ? module.ProjectProgress[0].score
-            : 0,
-        completed:
-          module.ProjectProgress.length > 0
-            ? module.ProjectProgress[0].completed
-            : false,
-      })),
-    }));
-    return {
-      success: true,
-      data: {
-        totalModules,
-        completedModules,
-        modulesByChapters,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching modules:", error);
-    return { success: false, message: "Failed to fetch modules", data: null };
+  if (!project) {
+    return null;
   }
+  return project.id;
 }

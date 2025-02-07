@@ -1,4 +1,4 @@
-import { getModules } from "@/actions/project.actions";
+import { getModules } from "@/actions/module.actions";
 import Header from "@/components/molecule/Header";
 import MainSidebar from "@/components/molecule/Sidebar/Main";
 
