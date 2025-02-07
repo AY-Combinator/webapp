@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrivyClient } from "@privy-io/server-auth";
+import privy from "./lib/privy";
 
 const protectedRoutes = [
   "/dashboard",
@@ -23,13 +24,8 @@ export async function middleware(req: NextRequest) {
       return NextResponse.redirect(new URL("/", req.url));
     }
 
-    const client = new PrivyClient(
-      process.env.NEXT_PUBLIC_PRIVY_APP_ID!,
-      process.env.PRIVY_APP_SECRET!
-    );
-
     try {
-      const { userId } = await client.verifyAuthToken(authToken);
+      const { userId } = await privy.verifyAuthToken(authToken);
 
       const cleanedUserId = userId.replace(/^did:privy:/, "");
 
