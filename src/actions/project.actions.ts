@@ -3,6 +3,8 @@
 import { ProjectData } from "@/lib/types";
 import prisma from "../../prisma/client";
 import { cookies } from "next/headers";
+import { Project } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 interface UserProjectResponse {
   success: boolean;
@@ -74,5 +76,37 @@ export async function getUserProject(): Promise<UserProjectResponse> {
   } catch (error) {
     console.error("Error fetching user project:", error);
     return { success: false, status: 500, message: "Internal server error" };
+  }
+}
+
+interface UpdateProjectParams {
+  projectId: string;
+  field: keyof Project;
+  value: string;
+}
+
+export async function updateProject({
+  projectId,
+  field,
+  value,
+}: UpdateProjectParams) {
+  try {
+    if (!projectId || !field || value === undefined) {
+      throw new Error("Invalid request: Missing required fields");
+    }
+
+    if (!(field in prisma.project.fields)) {
+      throw new Error("Invalid field name");
+    }
+
+    const updatedProject = await prisma.project.update({
+      where: { id: projectId },
+      data: { [field]: field === "tags" ? JSON.parse(value) : value },
+    });
+    revalidatePath("/dashboard");
+    return { success: true, project: updatedProject };
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return { success: false, message: "Failed to update project" };
   }
 }

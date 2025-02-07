@@ -42,7 +42,7 @@ const ImageDropzone = ({ currentImage, projectId }: DropzoneProps) => {
     <div
       {...getRootProps()}
       className={cn(
-        "w-full h-max  bg-white/80 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white transition p-2",
+        "w-full h-max max-h-full bg-white/80 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white transition p-2",
         {
           "h-full border-dashed border-background-secondary/30 border-2 hover:border-orange":
             !imagePreview,
@@ -57,15 +57,13 @@ const ImageDropzone = ({ currentImage, projectId }: DropzoneProps) => {
           <p className="text-sm">Uploading...</p>
         </div>
       ) : imagePreview ? (
-        <div className="relative w-full h-full flex items-center justify-center ">
-          <Image
-            src={imagePreview}
-            alt="Project Image"
-            className="object-cover w-full h-full rounded-md"
-            width={200}
-            height={200}
-          />
-        </div>
+        <Image
+          src={imagePreview}
+          alt="Project Image"
+          className="object-cover rounded-md  max-h-full w-auto"
+          width={200}
+          height={200}
+        />
       ) : (
         <span className="font-archivo text-center text-muted-foreground text-sm p-2">
           Choose a great image for your project
