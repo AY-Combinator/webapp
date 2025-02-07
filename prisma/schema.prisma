@@ -4,76 +4,72 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id            String   @id @default(uuid())
+  id            String    @id @default(uuid())
   email         String?
-  firstName     String?  @map("first_name")
-  lastName      String?  @map("last_name")
-  walletAddress String?  @map("wallet_address")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @updatedAt @map("updated_at")
-
-  projects Project[]
+  firstName     String?   @map("first_name")
+  lastName      String?   @map("last_name")
+  walletAddress String?   @map("wallet_address")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  walletId      String?
+  projects      Project[]
+  Wallet        Wallet?   @relation(fields: [walletId], references: [id])
 
   @@map("users")
 }
 
 model Project {
-  id               String   @id @default(uuid())
+  id               String            @id @default(uuid())
   title            String?
-  featuredImage    String?  @map("featured_image")
-  shortDescription String?  @map("short_description")
-  longDescription  String?  @map("long_description")
+  featuredImage    String?           @map("featured_image")
   tags             String[]
-  createdAt        DateTime @default(now()) @map("created_at")
-  updatedAt        DateTime @updatedAt @map("updated_at")
-
-  User            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId          String
-  ProjectProgress ProjectProgress[]
+  userId           String
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+  longDescription  String?           @map("long_description")
+  shortDescription String?           @map("short_description")
+  ProjectProgress  ProjectProgress[]
+  User             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("projects")
 }
 
 model Chapter {
-  id    String @id @default(uuid())
-  name  String
-  order Int    @unique
-
+  id      String   @id @default(uuid())
+  name    String
+  order   Int      @unique
   modules Module[]
 
   @@map("chapters")
 }
 
 model Module {
-  id          String           @id @default(uuid())
-  name        String
-  description String?
-  difficulty  ModuleDifficulty
-  maxScore    Int
-  order       Int              @unique
-  chapter     Chapter          @relation(fields: [chapterId], references: [id], onDelete: Cascade)
-  chapterId   String
-
+  id              String               @id @default(uuid())
+  name            String
+  slug            String
+  description     String?
+  difficulty      ModuleDifficulty
+  maxScore        Int
+  order           Int                  @unique
+  chapterId       String
   prerequisites   ModulePrerequisite[] @relation("ModulePrerequisites")
   requiredModules ModulePrerequisite[] @relation("ModulePrerequisiteModule")
+  chapter         Chapter              @relation(fields: [chapterId], references: [id], onDelete: Cascade)
   ProjectProgress ProjectProgress[]
-}
 
-enum ModuleDifficulty {
-  Beginner
-  Intermediate
-  Advanced
+  @@map("modules")
 }
 
 model ModulePrerequisite {
-  module             Module @relation("ModulePrerequisites", fields: [moduleId], references: [id], onDelete: Cascade)
   moduleId           String
   prerequisiteId     String
+  module             Module @relation("ModulePrerequisites", fields: [moduleId], references: [id], onDelete: Cascade)
   prerequisiteModule Module @relation("ModulePrerequisiteModule", fields: [prerequisiteId], references: [id])
 
   @@unique([moduleId, prerequisiteId])
@@ -81,14 +77,30 @@ model ModulePrerequisite {
 }
 
 model ProjectProgress {
-  id        String  @id @default(uuid())
-  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  projectId String
-  module    Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
-  moduleId  String
-  score     Int     @default(0)
-  completed Boolean @default(false)
+  id          String  @id @default(uuid())
+  projectId   String
+  moduleId    String
+  score       Int     @default(0)
+  completed   Boolean @default(false)
+  deliverable String?
+  module      Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  project     Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@unique([projectId, moduleId])
   @@map("project_progress")
+}
+
+model Wallet {
+  id        String @id
+  address   String
+  chainType String @map("chain_type")
+  User      User[]
+
+  @@map("wallets")
+}
+
+enum ModuleDifficulty {
+  Beginner
+  Intermediate
+  Advanced
 }

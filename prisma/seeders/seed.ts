@@ -4,8 +4,12 @@ import prisma from "../client";
 async function main() {
   console.log("Seeding database...");
 
-  const chapters = JSON.parse(fs.readFileSync("./prisma/seeders/data/chapters.json", "utf-8"));
-  const modules = JSON.parse(fs.readFileSync("./prisma/seeders/data/modules.json", "utf-8"));
+  const chapters = JSON.parse(
+    fs.readFileSync("./prisma/seeders/data/chapters.json", "utf-8")
+  );
+  const modules = JSON.parse(
+    fs.readFileSync("./prisma/seeders/data/modules.json", "utf-8")
+  );
   const prerequisites = JSON.parse(
     fs.readFileSync("./prisma/seeders/data/prerequisites.json", "utf-8")
   );
@@ -22,6 +26,7 @@ async function main() {
     const createdModule = await prisma.module.create({
       data: {
         name: module.name,
+        slug: module.slug,
         description: module.description,
         difficulty: module.difficulty,
         maxScore: module.maxScore,

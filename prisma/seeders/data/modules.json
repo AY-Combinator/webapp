@@ -1,6 +1,7 @@
 [
   {
     "name": "Problem Framing",
+    "slug": "problem-framing",
     "description": "This module is designed to help teams clearly define, analyze, and validate a problem before exploring solutions. It ensures alignment among stakeholders by providing a deep understanding of the problem\u2019s context, root causes, affected parties, and constraints. This document serves as a foundation for decision-making by outlining key assumptions, user insights, validation evidence, and success criteria, ensuring that problem-solving efforts are focused, data-driven, and impactful.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -9,6 +10,7 @@
   },
   {
     "name": "Risks & Hypothesis",
+    "slug": "risks-and-hypothesis",
     "description": "The Risks & Hypothesis Module is designed to systematically identify, assess, and validate uncertainties in a project or business initiative. It ensures that key risks are prioritized, mitigation strategies are defined, and hypotheses are tested using data-driven methods. By structuring risk analysis and experimentation, this approach helps teams make informed decisions, reduce uncertainty, and refine strategies for success.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -17,6 +19,7 @@
   },
   {
     "name": "User Interviews",
+    "slug": "user-interviews",
     "description": "The User Interviews Module is designed to systematically gather qualitative insights from users to drive product development, user experience improvements, and business decisions. By carefully selecting participants, structuring interviews effectively, and analyzing responses, this process ensures that real user needs, behaviors, and pain points are deeply understood. The findings from user interviews provide actionable guidance for refining products, optimizing customer journeys, and enhancing market fit.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -25,6 +28,7 @@
   },
   {
     "name": "User Persona",
+    "slug": "user-persona",
     "description": "The User Persona Module offers a structured approach to defining a detailed representation of a target user segment. A strong persona captures demographics, goals, pain points, behaviors, and motivations, providing a deep understanding of how users interact with a product or service. A high-quality user persona should be research-backed, specific, and actionable, serving as a strategic tool for product development, marketing, and customer experience decisions.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -33,6 +37,7 @@
   },
   {
     "name": "User Journey",
+    "slug": "user-journey",
     "description": "The User Journey Module maps the complete experience of a user interacting with a product or service, from initial awareness to post-engagement. A well-crafted user journey highlights user motivations, pain points, and touchpoints across different stages, ensuring a seamless experience. A high-quality document should be detailed, user-centered, and actionable, guiding product, UX, and marketing teams to optimize the journey and remove friction.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -41,6 +46,7 @@
   },
   {
     "name": "Market Research",
+    "slug": "market-research",
     "description": "The Market Research Framework provides a structured approach to analyzing industry trends, customer needs, and market opportunities. A high-quality market research document should focus on market size, growth potential, regulatory influences, economic trends, and evolving consumer behaviors. By identifying gaps, emerging opportunities, and demand drivers, this research informs strategic positioning, product development, and go-to-market decisions. Competitive insights will be addressed separately in the Competitor Analysis module.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -49,6 +55,7 @@
   },
   {
     "name": "Competitor Analysis",
+    "slug": "competitor-analysis",
     "description": "The Competitor Analysis Module provides a structured approach to evaluating the strengths, weaknesses, and market positioning of competitors. A high-quality competitor analysis document should include insights on direct and indirect competitors, product/service differentiation, pricing models, go-to-market strategies, and competitive advantages. By understanding the landscape, businesses can identify opportunities for differentiation, anticipate threats, and develop strategies to gain a competitive edge.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -57,6 +64,7 @@
   },
   {
     "name": "Jobs-To-Be-Done",
+    "slug": "jobs-to-be-done",
     "description": "The Jobs-To-Be-Done (JTBD) Module helps identify the fundamental tasks that users are trying to accomplish, along with their functional, emotional, and social drivers. A high-quality JTBD document should clearly define user needs, pain points, workarounds, desired outcomes, and opportunities for innovation. By understanding what truly motivates users, businesses can design solutions that align with real customer needs rather than just feature-driven development.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -65,6 +73,7 @@
   },
   {
     "name": "Business Model",
+    "slug": "business-model",
     "description": "The Business Model Module defines how a company creates, delivers, and captures value while ensuring financial sustainability and scalability. A well-structured business model document should include customer segments, revenue streams, cost structures, distribution channels, key partnerships, and competitive positioning. By clearly outlining these components, businesses can refine their strategies, optimize operations, and build a foundation for long-term success.",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -73,6 +82,7 @@
   },
   {
     "name": "MVP Development",
+    "slug": "mvp-development",
     "description": "The MVP Development Module focuses on creating a Minimum Viable Product that delivers core value while minimizing time and resource investment. A high-quality MVP document should define key features, user needs, technical feasibility, development timeline, and validation criteria. A well-executed MVP allows businesses to test assumptions, gather user feedback, and iterate efficiently before full-scale development.\n",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -81,6 +91,7 @@
   },
   {
     "name": "Tech Architecture",
+    "slug": "tech-architecture",
     "description": "The Software Architecture Module ensures that a product is built on a scalable, maintainable, and secure technical foundation. A high-quality architecture document should define system design, technology stack, data management, scalability considerations, and security protocols. A well-planned architecture ensures smooth product evolution, reducing technical debt and enabling long-term growth.",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -88,7 +99,8 @@
     "chapterName": "II - Product & Business Strategy"
   },
   {
-    "name": "Risk Reevaluation*",
+    "name": "Risk Reevaluation",
+    "slug": "risk-reevaluation",
     "description": "The Risk Reevaluation Module ensures that businesses reassess key risks after defining the business model, MVP, and software architecture. A high-quality risk reevaluation document should identify new risks, evolving threats, mitigation strategies, and contingency planning. By periodically reassessing risks, businesses can adapt proactively and prevent operational, financial, or market-related disruptions.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -97,6 +109,7 @@
   },
   {
     "name": "User Experience",
+    "slug": "user-experience",
     "description": "The User Experience (UX) Module ensures that product interactions are intuitive, engaging, and aligned with user needs. A high-quality UX document should define user behavior insights, usability principles, accessibility considerations, and iterative design processes. A well-crafted UX strategy increases adoption, reduces friction, and enhances customer satisfaction.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -105,6 +118,7 @@
   },
   {
     "name": "Roadmapping",
+    "slug": "roadmapping",
     "description": "The Roadmapping Module provides a structured plan for product development and business growth, ensuring teams align on priorities and execution timelines. A high-quality roadmap should define short-term milestones, long-term vision, feature prioritization, dependencies, and iteration cycles. A well-structured roadmap fosters strategic decision-making while maintaining flexibility to adapt to market needs.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -113,6 +127,7 @@
   },
   {
     "name": "Brand Positioning",
+    "slug": "brand-positioning",
     "description": "The Brand Positioning Module ensures that businesses define a clear, compelling, and differentiated identity in the market. A high-quality brand positioning document should define target audience perception, unique value proposition, brand messaging, and competitive differentiation. A strong brand position enhances trust, visibility, and long-term customer loyalty.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -121,6 +136,7 @@
   },
   {
     "name": "GTM",
+    "slug": "gtm",
     "description": "A structured plan outlining how a company will successfully launch, position, and distribute a product or service in the market. It serves as a blueprint for aligning product, marketing, sales, customer success, and operations teams around a common goal: driving adoption and revenue. This document ensures that all stakeholders understand who the target customers are, what the unique value proposition is, how the product will reach them, and how success will be measured.",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -129,6 +145,7 @@
   },
   {
     "name": "Community building",
+    "slug": "community-building",
     "description": "The Community Building Module focuses on creating, nurturing, and sustaining an engaged audience around a brand, product, or mission. A high-quality community-building document should define the community\u2019s purpose, structure, engagement strategies, governance, incentives, and success metrics. A well-managed community fosters loyalty, enhances user engagement, and creates long-term advocates.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -137,6 +154,7 @@
   },
   {
     "name": "Content Strategy",
+    "slug": "content-strategy",
     "description": "The Content Strategy Module ensures that content efforts are purposeful, targeted, and aligned with business goals. A high-quality content strategy document should define content goals, audience segmentation, content formats, distribution strategies, and performance measurement. A well-planned content strategy enhances engagement, drives conversions, and supports long-term brand growth.",
     "difficulty": "Beginner",
     "maxScore": 25,
@@ -145,6 +163,7 @@
   },
   {
     "name": "Sales",
+    "slug": "sales",
     "description": "The Sales Module ensures that the sales strategy is structured, targeted, and aligned with revenue growth goals. A high-quality sales document should define the sales funnel, audience segmentation, sales channels, pricing models, conversion strategies, retention tactics, and performance measurement. A well-planned sales strategy maximizes customer acquisition, improves retention, and drives sustainable revenue.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -153,6 +172,7 @@
   },
   {
     "name": "Measuring Impact (KPIs)",
+    "slug": "measuring-impact-kpis",
     "description": "The Measuring Impact (KPIs) Module ensures that business and product performance are tracked effectively through key metrics. A high-quality KPI document should define business goals, user engagement metrics, sales performance, operational efficiency, and data-driven decision-making strategies. A structured KPI framework allows companies to measure success, optimize strategy, and drive sustainable growth.",
     "difficulty": "Intermediate",
     "maxScore": 50,
@@ -161,6 +181,7 @@
   },
   {
     "name": "Team",
+    "slug": "team",
     "description": "The Team Module ensures that the company has the right talent, structure, and growth strategy to execute its vision. A high-quality team document should define organizational structure, hiring plans, external partnerships, compensation, team development, and long-term scalability. A well-planned team strategy fosters a strong company culture, optimizes execution, and prepares for sustainable growth.",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -169,6 +190,7 @@
   },
   {
     "name": "Pitch Prep",
+    "slug": "pitch-prep",
     "description": "The Pitch Preparation Module ensures that founders can craft a compelling pitch that resonates with investors, partners, and stakeholders. A high-quality pitch document should define the core problem, solution, market opportunity, business model, competitive advantage, financial projections, and execution strategy. A well-structured pitch increases investor confidence, improves storytelling, and enhances fundraising success.\n\n",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -177,6 +199,7 @@
   },
   {
     "name": "Scaling Strategies",
+    "slug": "scaling-strategies",
     "description": "The Scaling Strategies Module ensures that businesses can expand effectively without compromising efficiency or financial stability. A high-quality scaling strategy document should define market expansion plans, product scalability, customer acquisition and retention, operational growth, financial sustainability, and key growth metrics. A well-structured scaling approach supports long-term success and adaptability.",
     "difficulty": "Intermediate",
     "maxScore": 100,
@@ -185,6 +208,7 @@
   },
   {
     "name": "Exit Strategy",
+    "slug": "exit-strategy",
     "description": "The Exit Strategy Module ensures that businesses plan for a structured and profitable exit, aligning with stakeholder goals and market conditions. A high-quality exit strategy document should define exit objectives, potential pathways, valuation strategy, buyer identification, deal structuring, and post-exit transition plans. A well-executed exit ensures maximum financial returns and business continuity.",
     "difficulty": "Advanced",
     "maxScore": 100,
@@ -193,6 +217,7 @@
   },
   {
     "name": "Investment Readiness",
+    "slug": "investment-readiness",
     "description": "The Investment Readiness Module ensures that businesses are well-prepared to secure funding by aligning financial health, scalability, and investor expectations. A high-quality investment readiness document should define funding needs, business model viability, market opportunity, capital allocation, legal compliance, investor outreach, and risk management. A well-prepared investment strategy increases credibility and enhances fundraising success.",
     "difficulty": "Advanced",
     "maxScore": 100,
