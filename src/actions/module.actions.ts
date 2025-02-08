@@ -284,8 +284,14 @@ export async function updateModuleChatHistory(
 
   if (!projectId) return;
 
+  const projectProgress = await prisma.projectProgress.findFirst({
+    where: { moduleId: moduleId, projectId: projectId },
+  });
+
+  if (!projectProgress) return;
+
   await prisma.projectProgress.update({
-    where: { id: moduleId, projectId: projectId },
+    where: { id: projectProgress.id },
     data: { chatHistory: [...moduleChatHistory, ...newMessages] },
   });
 }
