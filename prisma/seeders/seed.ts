@@ -27,6 +27,7 @@ async function main() {
       data: {
         name: module.name,
         slug: module.slug,
+        agentId: module.agentId,
         description: module.description,
         difficulty: module.difficulty,
         maxScore: module.maxScore,

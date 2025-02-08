@@ -1,7 +1,12 @@
 import { getModuleBySlug } from "@/actions/module.actions";
 import Chat from "@/components/organism/Chat";
-
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
+
+// TODO: Add a loading skeleton, or even better, move chatHistory to separate table and fetch it separately in chat component
+const Loading = () => {
+  return <p>Loading...</p>;
+};
 
 const ModuleRoute = async ({
   params,
@@ -15,7 +20,11 @@ const ModuleRoute = async ({
     notFound();
   }
 
-  return <Chat data={moduleData.module} />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <Chat data={moduleData.module} />
+    </Suspense>
+  );
 };
 
 export default ModuleRoute;

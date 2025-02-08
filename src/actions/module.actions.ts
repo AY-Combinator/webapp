@@ -1,9 +1,10 @@
 "use server";
-import { ChapterData } from "@/lib/types";
+import { ChapterData, Message } from "@/lib/types";
 import { cookies } from "next/headers";
 import prisma from "../../prisma/client";
 import { getUserId } from "./user.actions";
 import { getProjectId } from "./project.actions";
+import { JsonValue } from "@prisma/client/runtime/library";
 
 export interface ModulesResponseData {
   totalModules?: number;
@@ -82,6 +83,8 @@ export async function getModules(): Promise<GetModulesResponse> {
           module.ProjectProgress.length > 0
             ? module.ProjectProgress[0].completed
             : false,
+        chatHistory: [] as Message[],
+        agentId: "",
       })),
     }));
     return {
@@ -117,6 +120,7 @@ export interface ModuleData {
   maxScore: number;
   order: number;
   chapterId: string;
+  chatHistory: Message[] | null;
   requiredModules: { module: RequiredModule }[];
 }
 
@@ -143,7 +147,16 @@ export async function getModuleBySlug(
   try {
     const moduleItem = await prisma.module.findFirst({
       where: { slug },
-      include: {
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        description: true,
+        difficulty: true,
+        maxScore: true,
+        order: true,
+        chapterId: true,
+        chatHistory: true,
         requiredModules: {
           select: {
             module: {
@@ -187,6 +200,7 @@ export async function getModuleBySlug(
       success: true,
       module: {
         ...moduleItem,
+        chatHistory: moduleItem.chatHistory as Message[] | null,
         moduleProgress,
       },
     };
@@ -240,4 +254,21 @@ export async function getProjectModulesWithDeliverables() {
     console.error(error);
     return { success: false, deliverables: null };
   }
+}
+
+export async function getModuleChatHistory(moduleId: string) {
+  const module = await prisma.module.findUnique({
+    where: { id: moduleId },
+    select: { chatHistory: true },
+  });
+  return module?.chatHistory;
+}
+
+export async function updateModuleChatHistory(moduleId: string, newMessages: Message[]) {
+  const moduleChatHistory = await getModuleChatHistory(moduleId) as Message[] || [];
+
+  await prisma.module.update({
+    where: { id: moduleId },
+    data: { chatHistory: [...moduleChatHistory, ...newMessages] },
+  });
 }

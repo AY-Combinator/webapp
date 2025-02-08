@@ -3,20 +3,26 @@
 import ChatInput from "@/components/molecule/Chat/Input";
 import MessagesStream from "@/components/molecule/Chat/MessagesStream";
 import { Message } from "@/lib/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AUTHONOME_URL } from "../../../../constants";
+import { updateModuleChatHistory } from "@/actions/module.actions";
 
 interface ConversationProps {
+  //  TODO: fix this
+  chatHistory: Message[] | [];
   agentId: string;
+  moduleId: string;
 }
 
-const Conversation = ({ agentId }: ConversationProps) => {
+const Conversation = ({ chatHistory, agentId, moduleId }: ConversationProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isResponseLoading, setIsResponseLoading] = useState<boolean>(false);
 
-  const addUserMessage = async (message: Message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
+  const addUserMessage = async (userMessage: Message) => {
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
     setIsResponseLoading(true);
+
+    console.log(userMessage);
 
     try {
       const response = await fetch(
@@ -30,7 +36,7 @@ const Conversation = ({ agentId }: ConversationProps) => {
           body: JSON.stringify({
             userId: "user",
             userName: "User",
-            text: message.content,
+            text: userMessage.content,
           }),
         }
       );
@@ -41,12 +47,13 @@ const Conversation = ({ agentId }: ConversationProps) => {
 
       const data = await response.json();
       setIsResponseLoading(false);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { role: "assistant", content: data[0].text, user: "agent" },
-      ]);
 
-      console.log(messages);
+
+      const assistantMessage: Message = { role: "assistant", content: data[0].text };
+
+      setMessages((prevMessages) => [...prevMessages, assistantMessage]);
+
+      await updateModuleChatHistory(moduleId, [userMessage, assistantMessage]);
     } catch (error) {
       console.error("Error:", error);
       setIsResponseLoading(false);
@@ -54,6 +61,9 @@ const Conversation = ({ agentId }: ConversationProps) => {
     }
   };
 
+  useEffect(() => {
+    setMessages(chatHistory);
+  }, []);
 
   return (
     <section className="flex flex-col justify-between w-full overflow-hidden">

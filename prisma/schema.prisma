@@ -54,10 +54,12 @@ model Module {
   name            String
   slug            String
   description     String?
+  agentId         String?
   difficulty      ModuleDifficulty
   maxScore        Int
   order           Int                  @unique
   chapterId       String
+  chatHistory     Json[]
   prerequisites   ModulePrerequisite[] @relation("ModulePrerequisites")
   requiredModules ModulePrerequisite[] @relation("ModulePrerequisiteModule")
   chapter         Chapter              @relation(fields: [chapterId], references: [id], onDelete: Cascade)

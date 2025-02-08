@@ -52,6 +52,8 @@ type ModuleData = {
   slug: string;
   description: string | null;
   difficulty: string;
+  chatHistory: Message[] | [];
+  agentId: string;
   maxScore: number;
   order: number;
   score: number;
