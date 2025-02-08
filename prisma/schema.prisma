@@ -6,7 +6,6 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -59,7 +58,6 @@ model Module {
   maxScore        Int
   order           Int                  @unique
   chapterId       String
-  chatHistory     Json[]
   prerequisites   ModulePrerequisite[] @relation("ModulePrerequisites")
   requiredModules ModulePrerequisite[] @relation("ModulePrerequisiteModule")
   chapter         Chapter              @relation(fields: [chapterId], references: [id], onDelete: Cascade)
@@ -85,6 +83,7 @@ model ProjectProgress {
   score       Int     @default(0)
   completed   Boolean @default(false)
   deliverable String?
+  chatHistory     Json[]
   module      Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   project     Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
