@@ -57,7 +57,16 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "sharp"
+      "sharp",
+      "@parcel/watcher",
+      "@prisma/client",
+      "@prisma/engines",
+      "bigint-buffer",
+      "bufferutil",
+      "esbuild",
+      "keccak",
+      "prisma",
+      "utf-8-validate"
     ]
   }
 }
