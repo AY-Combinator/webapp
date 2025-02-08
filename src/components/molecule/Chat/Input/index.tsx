@@ -1,12 +1,29 @@
 import { Button } from "@/components/ui/button";
+import { Message } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ArrowBendRightUp, Paperclip } from "@phosphor-icons/react/dist/ssr";
+import { useState } from "react";
 
 interface ChatInputProps {
   className?: string;
+  addUserMessage: (message: Message) => void;
 }
 
-const ChatInput = ({ className }: ChatInputProps) => {
+const ChatInput = ({ className, addUserMessage }: ChatInputProps) => {
+  const [message, setMessage] = useState("");
+
+  const handleAddMessage = () => {
+    if (message.trim() === "") return;
+    addUserMessage({ role: "user", content: message });
+    setMessage(""); // Clear input after sending
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleAddMessage();
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -15,6 +32,9 @@ const ChatInput = ({ className }: ChatInputProps) => {
       )}
     >
       <input
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleKeyPress}
         type="text"
         placeholder="Type your correction here..."
         className="text-sm w-full bg-transparent focus:outline-none border-b border-solid border-border p-2 placeholder:italic caret-orange-500"
@@ -27,7 +47,10 @@ const ChatInput = ({ className }: ChatInputProps) => {
         >
           <Paperclip />
         </Button>
-        <Button className="bg-accent-foreground/20 rounded-full size-7 p-1.5 text-accent-foreground/40 hover:text-white">
+        <Button
+          onClick={handleAddMessage}
+          className="bg-accent-foreground/20 rounded-full size-7 p-1.5 text-accent-foreground/40 hover:text-white"
+        >
           <ArrowBendRightUp />
         </Button>
       </div>

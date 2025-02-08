@@ -2,7 +2,7 @@ import ChatMascot from "@/components/atom/Chat/ChatMascot";
 import { cn } from "@/lib/utils";
 
 interface ChatMessageProps {
-  from: "agent" | "client";
+  from: "assistant" | "client";
   content: string;
 }
 
@@ -13,10 +13,10 @@ const ChatMessage = ({ from, content }: ChatMessageProps) => {
         "justify-end": from === "client",
       })}
     >
-      {from === "agent" && <ChatMascot />}
+      {from === "assistant" && <ChatMascot />}
       <div
         className={cn("py-3 px-5 rounded-xl border border-solid text-sm", {
-          "border-primary bg-primary text-white w-3/5": from === "agent",
+          "border-primary bg-primary text-white w-3/5": from === "assistant",
           "border-border bg-background text-black w-2/3": from === "client",
         })}
       >

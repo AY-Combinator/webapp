@@ -1,0 +1,1 @@
+export const AUTHONOME_URL = "https://autonome.alt.technology/agent-ulhnps";

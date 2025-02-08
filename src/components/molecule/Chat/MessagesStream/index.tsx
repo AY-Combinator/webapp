@@ -3,8 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import ChatMessage from "../Message";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { ArrowBendRightDown } from "@phosphor-icons/react/dist/ssr";
+import { Message } from "@/lib/types";
 
-const MessagesStream = () => {
+interface MessagesStreamProps {
+  agentResponding: boolean;
+  messages: Message[];
+}
+
+const MessagesStream = ({ agentResponding, messages }: MessagesStreamProps) => {
   // Reference to the scrollable viewport inside ScrollArea
   const viewportRef = useRef<HTMLDivElement>(null);
 
@@ -66,18 +72,19 @@ const MessagesStream = () => {
   }, []);
 
   return (
-    <div className="flex flex-col flex-1 overflow-hidden relative">
+    <div className="flex flex-col flex-1 overflow-hidden relative pb-[30px]">
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-t from-transparent to-white pointer-events-none z-50" />
       <ScrollArea className="w-full" viewportRef={viewportRef}>
         <div className="w-4/5 flex flex-col mx-auto gap-6 pt-10 pb-6">
-          <ChatMessage
-            from="agent"
-            content="Pariatur nisi fugiat ut nisi sint voluptate. Nostrud mollit laboris est dolore consequat esse est nostrud consectetur officia. Officia eiusmod non excepteur deserunt velit do ea voluptate magna sit aliquip amet exercitation. Do deserunt aliquip eiusmod eiusmod. Lorem adipisicing duis labore excepteur ea anim. Adipisicing quis commodo nulla excepteur qui labore voluptate ipsum occaecat. Ad dolor mollit duis anim aliquip est commodo occaecat ut occaecat amet ex."
-          />
-          <ChatMessage
-            from="client"
-            content="Non nisi Lorem sunt id cupidatat et laborum reprehenderit enim veniam ullamco anim. Velit occaecat labore laboris et duis consectetur esse culpa pariatur do in in ea. Sit eiusmod incididunt exercitation reprehenderit minim aliqua labore eu nulla duis quis proident qui. In dolor ut aliqua qui sit sit tempor eiusmod cupidatat exercitation incididunt anim. Adipisicing velit nisi sint exercitation laborum sint cupidatat officia nisi incididunt. Fugiat cillum elit officia sit ut deserunt proident. Do eu esse qui veniam do officia ad dolor exercitation labore nulla est."
-          />
+          {
+            messages?.map((message, index) => (
+              <ChatMessage
+                key={index}
+                from={message.role === "user" ? "client" : "assistant"}
+                content={message.content}
+              />
+            ))}
+          {agentResponding && <ChatMessage from="assistant" content="..." />}
         </div>
         <ScrollBar className="z-[100]" />
       </ScrollArea>

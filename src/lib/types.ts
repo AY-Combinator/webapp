@@ -64,6 +64,11 @@ type ChapterData = {
   modules: ModuleData[];
 };
 
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+};
+
 export type {
   NavigationItem,
   ModuleMock,
@@ -72,4 +77,5 @@ export type {
   ProjectData,
   ModuleData,
   ChapterData,
+  Message,
 };

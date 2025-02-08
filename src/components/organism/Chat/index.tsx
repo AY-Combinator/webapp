@@ -13,7 +13,7 @@ const Chat = ({ data }: ChatProps) => {
         <ChatSidebar data={data} />
       </div>
       <div className="col-span-3 flex justify-center overflow-hidden">
-        <Conversation />
+        <Conversation agentId={"68bb428e-a72b-0597-8645-9ae25612f932"} />
       </div>
     </div>
   );
