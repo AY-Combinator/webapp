@@ -39,6 +39,7 @@ const LoginButton = () => {
       className="bg-orange text-background shadow-lg"
       onClick={login}
       disabled={isPending}
+      isLoading={isPending}
     >
       Start
     </Button>
