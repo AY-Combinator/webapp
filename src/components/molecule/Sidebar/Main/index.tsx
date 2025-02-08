@@ -14,9 +14,8 @@ const MainSidebar = ({
   const router = useRouter();
 
   if (!modulesData) return;
-
   return (
-    <div className="flex h-full flex-col gap-5 justify-between">
+    <div className="flex h-full flex-col gap-5 justify-between relative">
       <div className="flex flex-col gap-5 h-full overflow-hidden">
         <div className="flex items-center justify-between gap-3">
           <h2 className="text-lg text-background leading-none font-archivo-black">
