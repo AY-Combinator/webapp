@@ -40,7 +40,7 @@ const LoginButton = () => {
       onClick={login}
       disabled={isPending}
     >
-      Go to dashboard
+      Start
     </Button>
   );
 };
