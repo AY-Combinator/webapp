@@ -7,7 +7,6 @@ interface ChatProps {
 }
 
 const Chat = ({ data }: ChatProps) => {
-  console.log(data);
 
   return (
     <div className="grid grid-cols-4 bg-white w-full border border-solid border-border shadow-lg rounded-lg h-full overflow-hidden">
@@ -15,7 +14,11 @@ const Chat = ({ data }: ChatProps) => {
         <ChatSidebar data={data} />
       </div>
       <div className="col-span-3 flex justify-center overflow-hidden">
-        <Conversation chatHistory={data?.chatHistory || []} agentId={"68bb428e-a72b-0597-8645-9ae25612f932"} moduleId={data?.id || ""} />
+        <Conversation
+          chatHistory={data?.moduleProgress?.chatHistory || []}
+          agentId={"68bb428e-a72b-0597-8645-9ae25612f932"}
+          moduleId={data?.id || ""}
+        />
       </div>
     </div>
   );

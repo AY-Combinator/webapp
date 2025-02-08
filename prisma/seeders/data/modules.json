@@ -117,8 +117,7 @@
     "difficulty": "Intermediate",
     "maxScore": 50,
     "order": 12,
-    "chapterName": "II - Product & Business Strategy",
-    "chatHistory": []
+    "chapterName": "II - Product & Business Strategy"
   },
   {
     "name": "User Experience",
@@ -128,8 +127,7 @@
     "difficulty": "Beginner",
     "maxScore": 25,
     "order": 13,
-    "chapterName": "II - Product & Business Strategy",
-    "chatHistory": []
+    "chapterName": "II - Product & Business Strategy"
   },
   {
     "name": "Roadmapping",
@@ -139,8 +137,7 @@
     "difficulty": "Intermediate",
     "maxScore": 50,
     "order": 14,
-    "chapterName": "II - Product & Business Strategy",
-    "chatHistory": []
+    "chapterName": "II - Product & Business Strategy"
   },
   {
     "name": "Brand Positioning",
@@ -150,8 +147,7 @@
     "difficulty": "Beginner",
     "maxScore": 25,
     "order": 15,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "GTM",
@@ -161,8 +157,7 @@
     "difficulty": "Advanced",
     "maxScore": 100,
     "order": 16,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "Community building",
@@ -172,8 +167,7 @@
     "difficulty": "Intermediate",
     "maxScore": 50,
     "order": 17,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "Content Strategy",
@@ -183,8 +177,7 @@
     "difficulty": "Beginner",
     "maxScore": 25,
     "order": 18,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "Sales",
@@ -194,8 +187,7 @@
     "difficulty": "Intermediate",
     "maxScore": 50,
     "order": 19,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "Measuring Impact (KPIs)",
@@ -205,8 +197,7 @@
     "difficulty": "Intermediate",
     "maxScore": 50,
     "order": 20,
-    "chapterName": "III - Growth",
-    "chatHistory": []
+    "chapterName": "III - Growth"
   },
   {
     "name": "Team",
@@ -216,8 +207,7 @@
     "difficulty": "Advanced",
     "maxScore": 100,
     "order": 21,
-    "chapterName": "IV - Scaling",
-    "chatHistory": []
+    "chapterName": "IV - Scaling"
   },
   {
     "name": "Pitch Prep",
@@ -227,8 +217,7 @@
     "difficulty": "Advanced",
     "maxScore": 100,
     "order": 22,
-    "chapterName": "IV - Scaling",
-    "chatHistory": []
+    "chapterName": "IV - Scaling"
   },
   {
     "name": "Scaling Strategies",
@@ -238,8 +227,7 @@
     "difficulty": "Intermediate",
     "maxScore": 100,
     "order": 23,
-    "chapterName": "IV - Scaling",
-    "chatHistory": []
+    "chapterName": "IV - Scaling"
   },
   {
     "name": "Exit Strategy",
@@ -249,8 +237,7 @@
     "difficulty": "Advanced",
     "maxScore": 100,
     "order": 24,
-    "chapterName": "IV - Scaling",
-    "chatHistory": []
+    "chapterName": "IV - Scaling"
   },
   {
     "name": "Investment Readiness",
@@ -260,7 +247,6 @@
     "maxScore": 100,
     "order": 25,
     "chapterName": "IV - Scaling",
-    "agentId": "68bb428e-a72b-0597-8645-9ae25612f932",
-    "chatHistory": []
+    "agentId": "68bb428e-a72b-0597-8645-9ae25612f932"
   }
 ]

@@ -82,7 +82,6 @@ export async function getModules(): Promise<GetModulesResponse> {
           module.ProjectProgress.length > 0
             ? module.ProjectProgress[0].completed
             : false,
-        chatHistory: [] as Message[],
         agentId: "",
       })),
     }));
@@ -104,6 +103,7 @@ export interface ModuleProgress {
   score: number;
   completed: boolean;
   deliverable: string | null;
+  chatHistory: Message[] | null;
 }
 
 export interface RequiredModule {
@@ -119,7 +119,6 @@ export interface ModuleData {
   maxScore: number;
   order: number;
   chapterId: string;
-  chatHistory: Message[] | null;
   requiredModules: { module: RequiredModule }[];
 }
 
@@ -155,7 +154,6 @@ export async function getModuleBySlug(
         maxScore: true,
         order: true,
         chapterId: true,
-        chatHistory: true,
         requiredModules: {
           select: {
             module: {
@@ -191,6 +189,7 @@ export async function getModuleBySlug(
           score: true,
           completed: true,
           deliverable: true,
+          chatHistory: true,
         },
       });
     }
@@ -199,8 +198,12 @@ export async function getModuleBySlug(
       success: true,
       module: {
         ...moduleItem,
-        chatHistory: moduleItem.chatHistory as Message[] | null,
-        moduleProgress,
+        moduleProgress: {
+          score: moduleProgress?.score ?? 0,
+          completed: moduleProgress?.completed ?? false,
+          deliverable: moduleProgress?.deliverable ?? null,
+          chatHistory: moduleProgress?.chatHistory as Message[],
+        },
       },
     };
   } catch (error) {
@@ -256,11 +259,18 @@ export async function getProjectModulesWithDeliverables() {
 }
 
 export async function getModuleChatHistory(moduleId: string) {
-  const moduleResult = await prisma.module.findUnique({
-    where: { id: moduleId },
-    select: { chatHistory: true },
+  const projectId = await getProjectId();
+
+  if (!projectId) return null;
+
+  const projectProgress = await prisma.projectProgress.findFirst({
+    where: { moduleId: moduleId, projectId: projectId },
+    select: {
+      chatHistory: true,
+    },
   });
-  return moduleResult?.chatHistory;
+
+  return projectProgress?.chatHistory;
 }
 
 export async function updateModuleChatHistory(
@@ -270,8 +280,12 @@ export async function updateModuleChatHistory(
   const moduleChatHistory =
     ((await getModuleChatHistory(moduleId)) as Message[]) || [];
 
-  await prisma.module.update({
-    where: { id: moduleId },
+  const projectId = await getProjectId();
+
+  if (!projectId) return;
+
+  await prisma.projectProgress.update({
+    where: { id: moduleId, projectId: projectId },
     data: { chatHistory: [...moduleChatHistory, ...newMessages] },
   });
 }

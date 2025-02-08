@@ -13,6 +13,7 @@ interface ChatSidebarProps {
 
 const ChatSidebar = async ({ data }: ChatSidebarProps) => {
   const projectId = await getProjectId();
+
   if (!data || !projectId) return;
 
   const {
