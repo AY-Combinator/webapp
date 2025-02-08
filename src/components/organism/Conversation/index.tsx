@@ -25,7 +25,7 @@ const Conversation = ({ agentId }: ConversationProps) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Basic ${process.env.NEXT_PUBLIC_BASIC_TOKEN}`,
+            Authorization: `Basic ${process.env.NEXT_PUBLIC_AUTHONOME_BASIC_AUTH_TOKEN}`,
           },
           body: JSON.stringify({
             userId: "user",
