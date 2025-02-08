@@ -47,6 +47,7 @@ const Tags = ({ tags, projectId }: { tags: string[]; projectId: string }) => {
 
   return (
     <div className="flex gap-2 items-center">
+      <span className="font-archivo-black mr-1">Tags:</span>
       {tags.length > 0 &&
         tags.map((tag, index) => (
           <Badge
