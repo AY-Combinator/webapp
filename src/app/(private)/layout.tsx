@@ -20,7 +20,7 @@ export default async function PrivateViewLayout({
       <aside className="col-span-1 bg-background-secondary h-full overflow-hidden sticky top-0 py-6 ~px-4/6">
         {!clickable && (
           <div className="absolute backdrop-blur-[2px] bg-sky/10 z-50 inset-0 flex flex-col justify-end p-4 items-center">
-            <div className="font-archivo bg-orange px-2 py-1 text-white rounded-lg font-medium text-center flex items-center gap-2 text-sm">
+            <div className="w-full font-archivo bg-orange px-2 py-1 text-white rounded-lg font-medium text-center flex justify-center items-center gap-2 text-sm">
               <Lock />
               <span>Add project details to unlock</span>
             </div>
