@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import prisma from "../../prisma/client";
 import { getUserId } from "./user.actions";
 import { getProjectId } from "./project.actions";
-import { JsonValue } from "@prisma/client/runtime/library";
 
 export interface ModulesResponseData {
   totalModules?: number;
@@ -257,15 +256,19 @@ export async function getProjectModulesWithDeliverables() {
 }
 
 export async function getModuleChatHistory(moduleId: string) {
-  const module = await prisma.module.findUnique({
+  const moduleResult = await prisma.module.findUnique({
     where: { id: moduleId },
     select: { chatHistory: true },
   });
-  return module?.chatHistory;
+  return moduleResult?.chatHistory;
 }
 
-export async function updateModuleChatHistory(moduleId: string, newMessages: Message[]) {
-  const moduleChatHistory = await getModuleChatHistory(moduleId) as Message[] || [];
+export async function updateModuleChatHistory(
+  moduleId: string,
+  newMessages: Message[]
+) {
+  const moduleChatHistory =
+    ((await getModuleChatHistory(moduleId)) as Message[]) || [];
 
   await prisma.module.update({
     where: { id: moduleId },
