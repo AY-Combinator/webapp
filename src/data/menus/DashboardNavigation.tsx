@@ -9,13 +9,6 @@ export const DashboardNavigation: NavigationItem[] = [
     external: false,
   },
   {
-    label: "Profile",
-    href: "/profile",
-    newTab: false,
-    ariaLabel: "Go to Profile",
-    external: false,
-  },
-  {
     label: "Settings",
     href: "/settings",
     newTab: false,
