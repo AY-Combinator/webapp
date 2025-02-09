@@ -29,7 +29,7 @@ const FundingEvaluation = ({ userId }: FundingEvaluationProps) => {
         roomId: userId,
         userId: "user",
         userName: "User",
-        text: "Based on all the answer I gave about my startup, can you please evalute and see if you would like to invest? If no, please me give a detailed reason why not.",
+        text: "Based on all the answers I gave about my startup, can you please evalute and see if you would like to invest? If no, please me give a detailed reason why not.",
       }),
     });
 
