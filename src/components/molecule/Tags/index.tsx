@@ -46,12 +46,12 @@ const Tags = ({ tags, projectId }: { tags: string[]; projectId: string }) => {
   };
 
   return (
-    <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center flex-wrap">
       <span className="font-archivo-black mr-1">Tags:</span>
       {tags.length > 0 &&
         tags.map((tag, index) => (
           <Badge
-            className="rounded-full bg-background px-2 py-1 leading-none font-source-serif font-semibold italic text-sm text-background-secondary/80 hover:bg-background"
+            className="rounded-full min-w-max bg-background px-2 py-1 leading-none font-source-serif font-semibold italic text-sm text-background-secondary/80 hover:bg-background"
             key={index}
           >
             {tag}
