@@ -1,4 +1,4 @@
-export const AUTHONOME_URL = "https://autonome.alt.technology/agent-lqqwgl'";
+export const AUTHONOME_URL = "https://autonome.alt.technology/agent-lqqwgl";
 export const POINTS_TO_UNLOCK_FUNDING = 1200;
 export const MODULE_TO_AGENT_ID = {
   "problem-facing": "6bb0cefb-df38-040a-82c6-e67ba5dc2887",
