@@ -32,7 +32,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   title: "AY Combinator",
   description:
-    "Lorem ipsum odor amet, consectetuer adipiscing elit. Sollicitudin congue ut nostra eleifend hac in elementum cras!",
+    "AY Combinator is an AI-powered Web3 startup incubator operating as a DAO. AI agents guide founders through the program, evaluate projects, and allocate funding through on-chain governance and investment smart contracts.",
 };
 
 export default function RootLayout({
