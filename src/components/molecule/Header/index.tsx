@@ -23,7 +23,7 @@ const Header = ({ enableFundingButton }: { enableFundingButton: boolean }) => {
                 <Tooltip open={!enableFundingButton && open} onOpenChange={setOpen}>
                   <TooltipTrigger asChild>
                     <Button
-                      className={`${!enableFundingButton ? "bg-gray-400 hover:bg-gray-400" : ""}`}
+                      className={`rounded-sm bg-black text-background py-3 h-max hover:opacity-99 font-archivo font-medium ${!enableFundingButton ? "bg-gray-400 hover:bg-gray-400" : ""}`}
                     >
                       Apply for Funding
                     </Button>
@@ -38,7 +38,7 @@ const Header = ({ enableFundingButton }: { enableFundingButton: boolean }) => {
               </TooltipProvider>
             ) : (
               <Link href="/apply-for-funding">
-                <Button>Apply for Funding</Button>
+                <Button className="rounded-sm bg-black text-background py-3 h-max hover:opacity-99 font-archivo font-medium">Apply for Funding</Button>
               </Link>
             )
           }

@@ -1,13 +1,22 @@
 import NotEligible from "../../../components/organism/NotEligible";
 import FundingEvaluation from "@/components/organism/FundingEvaluation";
-const ApplyForFundingRoute = () => {
-  // TODO: check if eligible for funding
+import { getUserProject } from "@/actions/project.actions";
+import { POINTS_TO_UNLOCK_FUNDING } from "../../../../constants";
 
-  const eligible = true;
+const ApplyForFundingRoute = async () => {
+  const project = await getUserProject();
+
+  if ((project.project?.cumulativeProgress?.earnedPoints ?? 0) < POINTS_TO_UNLOCK_FUNDING) {
+    return (
+      <NotEligible title="Wow, where are you running to?" reason="Please finish all modules to apply for funding" />
+    );
+  }
+
+  // TODO: fetch reason from backend
   const reason = "Because reason";
 
-  if (!eligible) {
-    return <NotEligible reason={reason} />;
+  if (!project.project?.eligibleForFunding) {
+    return <NotEligible title="Sorry, you are not eligible for funding" reason={reason} />;
   }
 
   // TODO: if eligible, show form
