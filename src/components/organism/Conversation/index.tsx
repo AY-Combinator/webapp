@@ -44,6 +44,7 @@ const Conversation = ({ chatHistory, agentId, moduleId, userId }: ConversationPr
       );
 
       if (!response.ok) {
+        setIsResponseLoading(false);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 

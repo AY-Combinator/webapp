@@ -1,10 +1,12 @@
 import NotEligible from "../../../components/organism/NotEligible";
 import FundingEvaluation from "@/components/organism/FundingEvaluation";
 import { getUserProject } from "@/actions/project.actions";
+import { getUserId } from "@/actions/user.actions";
 import { POINTS_TO_UNLOCK_FUNDING } from "../../../../constants";
 
 const ApplyForFundingRoute = async () => {
   const project = await getUserProject();
+  const userId = await getUserId();
 
   if ((project.project?.cumulativeProgress?.earnedPoints ?? 0) < POINTS_TO_UNLOCK_FUNDING) {
     return (
@@ -20,9 +22,7 @@ const ApplyForFundingRoute = async () => {
   }
 
   // TODO: if eligible, show form
-  return (
-    <FundingEvaluation />
-  );
+  return <FundingEvaluation userId={userId || ""} />;
 };
 
 export default ApplyForFundingRoute;

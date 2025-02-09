@@ -1,5 +1,6 @@
 export const AUTHONOME_URL = "https://autonome.alt.technology/agent-lqqwgl";
 export const POINTS_TO_UNLOCK_FUNDING = 1200;
+export const INVESTOR_AGENT_ID = "68bb428e-a72b-0597-8645-9ae25612f932"; //Venture Partner Agent
 export const MODULE_TO_AGENT_ID = {
   "problem-facing": "6bb0cefb-df38-040a-82c6-e67ba5dc2887",
   "risks-and-hypothesis": "77b3f84c-e907-0798-ab91-5921fe7fd114",
