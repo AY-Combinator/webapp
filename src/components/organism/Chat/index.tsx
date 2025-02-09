@@ -7,7 +7,6 @@ interface ChatProps {
 }
 
 const Chat = ({ data }: ChatProps) => {
-
   return (
     <div className="grid grid-cols-4 bg-white w-full border border-solid border-border shadow-lg rounded-lg h-full overflow-hidden">
       <div className="col-span-1 border-r border-border border-solid w-full overflow-hidden flex">
@@ -16,8 +15,7 @@ const Chat = ({ data }: ChatProps) => {
       <div className="col-span-3 flex justify-center overflow-hidden">
         <Conversation
           chatHistory={data?.moduleProgress?.chatHistory || []}
-          // TODO: get agentId from module
-          agentId={"68bb428e-a72b-0597-8645-9ae25612f932"}
+          agentId={data?.agentId || ""}
           moduleId={data?.id || ""}
         />
       </div>
