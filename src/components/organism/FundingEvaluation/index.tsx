@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const FundingEvaluation = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [isResponseLoading, setIsResponseLoading] = useState(false);
+  // const [isResponseLoading, setIsResponseLoading] = useState(false);
 
   const addUserMessage = (message: Message) => {
     setMessages([...messages, message]);
