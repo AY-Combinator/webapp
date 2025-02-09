@@ -1,3 +1,12 @@
+## All Proejct Repositories
+
+| **Repo** | **Description** | **Link** |
+|----------|---------------|---------|
+| .github | TODO | [GitHub Link](https://github.com/AY-Combinator/.github) |
+| webapp | TODO | [GitHub Link](https://github.com/AY-Combinator/webapp) |
+| ai_agent | TODO | [GitHub Link](https://github.com/AY-Combinator/ai_agent) |
+| contracts | TODO | [GitHub Link](https://github.com/AY-Combinator/contracts) |
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
