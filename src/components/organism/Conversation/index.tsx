@@ -12,9 +12,10 @@ interface ConversationProps {
   chatHistory: Message[] | [];
   agentId: string;
   moduleId: string;
+  userId: string;
 }
 
-const Conversation = ({ chatHistory, agentId, moduleId }: ConversationProps) => {
+const Conversation = ({ chatHistory, agentId, moduleId, userId }: ConversationProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isResponseLoading, setIsResponseLoading] = useState<boolean>(false);
 
@@ -34,6 +35,7 @@ const Conversation = ({ chatHistory, agentId, moduleId }: ConversationProps) => 
             Authorization: `Basic ${process.env.NEXT_PUBLIC_AUTHONOME_BASIC_AUTH_TOKEN}`,
           },
           body: JSON.stringify({
+            roomId: userId,
             userId: "user",
             userName: "User",
             text: userMessage.content,
