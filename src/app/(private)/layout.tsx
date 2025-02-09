@@ -1,8 +1,9 @@
 import { getModules } from "@/actions/module.actions";
-import { isProjectBasicFilled } from "@/actions/project.actions";
+import { getUserProject, isProjectBasicFilled } from "@/actions/project.actions";
 import Header from "@/components/molecule/Header";
 import MainSidebar from "@/components/molecule/Sidebar/Main";
 import { Lock } from "@phosphor-icons/react/dist/ssr";
+import { POINTS_TO_UNLOCK_FUNDING } from "../../../constants";
 
 export default async function PrivateViewLayout({
   children,
@@ -11,10 +12,14 @@ export default async function PrivateViewLayout({
 }>) {
   const modules = await getModules();
   const clickable = await isProjectBasicFilled();
+  const project = await getUserProject();
+
   return (
     <div className="grid grid-cols-4 flex-1 min-h-0 h-screen">
       <div className="col-span-3 ~pl-7/10 ~pr-4/6 flex flex-col pb-6 h-full overflow-hidden">
-        <Header />
+        <Header
+          enableFundingButton={(project?.project?.cumulativeProgress?.earnedPoints ?? 0) >= POINTS_TO_UNLOCK_FUNDING}
+        />
         <main className="h-full overflow-hidden w-full">{children}</main>
       </div>
       <aside className="col-span-1 bg-background-secondary h-full overflow-hidden sticky top-0 py-6 ~px-4/6">
