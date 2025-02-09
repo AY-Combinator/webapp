@@ -15,7 +15,7 @@ const ApplyForFundingRoute = async () => {
   // TODO: fetch reason from backend
   const reason = "Because reason";
 
-  if (!project.project?.eligibleForFunding) {
+  if (project.project?.eligibleForFunding === false) {
     return <NotEligible title="Sorry, you are not eligible for funding" reason={reason} />;
   }
 

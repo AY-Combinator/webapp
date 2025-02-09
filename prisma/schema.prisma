@@ -4,8 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -24,17 +24,18 @@ model User {
 }
 
 model Project {
-  id               String            @id @default(uuid())
-  title            String?
-  featuredImage    String?           @map("featured_image")
-  tags             String[]
-  userId           String
-  createdAt        DateTime          @default(now()) @map("created_at")
-  updatedAt        DateTime          @updatedAt @map("updated_at")
-  longDescription  String?           @map("long_description")
-  shortDescription String?           @map("short_description")
-  ProjectProgress  ProjectProgress[]
-  User             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                 String            @id @default(uuid())
+  title              String?
+  featuredImage      String?           @map("featured_image")
+  tags               String[]
+  userId             String
+  createdAt          DateTime          @default(now()) @map("created_at")
+  updatedAt          DateTime          @updatedAt @map("updated_at")
+  longDescription    String?           @map("long_description")
+  shortDescription   String?           @map("short_description")
+  eligibleForFunding Boolean?
+  ProjectProgress    ProjectProgress[]
+  User               User              @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("projects")
 }
@@ -83,7 +84,7 @@ model ProjectProgress {
   score       Int     @default(0)
   completed   Boolean @default(false)
   deliverable String?
-  chatHistory     Json[]
+  chatHistory Json[]
   module      Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   project     Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 

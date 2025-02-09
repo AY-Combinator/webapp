@@ -44,6 +44,7 @@ type ProjectData = {
     earnedPoints: number;
     totalPoints: number;
   };
+  eligibleForFunding: boolean | null;
 };
 
 type ModuleData = {

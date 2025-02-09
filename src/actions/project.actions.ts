@@ -37,6 +37,7 @@ export async function getUserProject(): Promise<UserProjectResponse> {
         shortDescription: true,
         longDescription: true,
         tags: true,
+        eligibleForFunding: true,
       },
     });
 
