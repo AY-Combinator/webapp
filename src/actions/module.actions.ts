@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import prisma from "../../prisma/client";
 import { getUserId } from "./user.actions";
 import { getProjectId } from "./project.actions";
+import { revalidatePath } from "next/cache";
 
 export interface ModulesResponseData {
   totalModules?: number;
@@ -18,25 +19,28 @@ interface GetModulesResponse {
 }
 export async function getModules(): Promise<GetModulesResponse> {
   const userId = await getUserId();
-
   if (!userId) {
     return { success: false, status: 403, message: "Unauthorized", data: null };
   }
+
   try {
-    const totalModules = global.totalModuleCount;
-    if (!totalModules) {
-      const modulesCount = await prisma.module.count();
-      global.totalModuleCount = modulesCount;
-    }
+    const totalModules =
+      global.totalModuleCount || (await prisma.module.count());
+    global.totalModuleCount = totalModules;
 
     const completedModules = await prisma.projectProgress.count({
-      where: {
-        project: {
-          userId,
-        },
-        completed: true,
-      },
+      where: { project: { userId }, completed: true },
     });
+
+    const projectId = await getProjectId();
+    if (!projectId) {
+      return {
+        success: false,
+        status: 400,
+        message: "No project found",
+        data: null,
+      };
+    }
 
     const chaptersWithModules = await prisma.chapter.findMany({
       select: {
@@ -48,13 +52,30 @@ export async function getModules(): Promise<GetModulesResponse> {
             id: true,
             name: true,
             slug: true,
+            agentId: true,
             description: true,
             difficulty: true,
             maxScore: true,
             order: true,
             ProjectProgress: {
-              where: { project: { userId } },
-              select: { score: true, completed: true },
+              where: { projectId },
+              select: { score: true, completed: true, deliverable: true },
+            },
+            prerequisites: {
+              select: {
+                module: {
+                  select: {
+                    id: true,
+                    name: true,
+                    agentId: true,
+                    maxScore: true,
+                    ProjectProgress: {
+                      where: { projectId },
+                      select: { score: true, deliverable: true },
+                    },
+                  },
+                },
+              },
             },
           },
           orderBy: { order: "asc" },
@@ -63,28 +84,40 @@ export async function getModules(): Promise<GetModulesResponse> {
       orderBy: { order: "asc" },
     });
 
+    // Determine if the module is clickable
     const modulesByChapters = chaptersWithModules.map((chapter) => ({
       chapterId: chapter.id,
       chapterName: chapter.name,
-      modules: chapter.modules.map((module) => ({
-        id: module.id,
-        name: module.name,
-        slug: module.slug,
-        description: module.description,
-        difficulty: module.difficulty,
-        maxScore: module.maxScore,
-        order: module.order,
-        score:
-          module.ProjectProgress.length > 0
-            ? module.ProjectProgress[0].score
-            : 0,
-        completed:
-          module.ProjectProgress.length > 0
-            ? module.ProjectProgress[0].completed
-            : false,
-        agentId: "",
-      })),
+      modules: chapter.modules.map((module) => {
+        const moduleProgress = module.ProjectProgress[0];
+
+        // Check if all prerequisites are met
+        const prerequisitesMet = module.prerequisites.every((prereq) => {
+          const prereqProgress = prereq.module.ProjectProgress[0];
+          return (
+            prereqProgress &&
+            prereqProgress.deliverable !== null &&
+            prereqProgress.score >= 0.6 * prereq.module.maxScore
+          );
+        });
+
+        return {
+          id: module.id,
+          name: module.name,
+          slug: module.slug,
+          agentId: module.agentId ?? "",
+          description: module.description,
+          difficulty: module.difficulty,
+          maxScore: module.maxScore,
+          order: module.order,
+          score: moduleProgress?.score ?? 0,
+          completed: moduleProgress?.completed ?? false,
+          deliverable: moduleProgress?.deliverable ?? null,
+          clickable: prerequisitesMet,
+        };
+      }),
     }));
+
     return {
       success: true,
       data: {
@@ -119,6 +152,7 @@ export interface ModuleData {
   maxScore: number;
   order: number;
   chapterId: string;
+  agentId: string | null;
   requiredModules: { module: RequiredModule }[];
 }
 
@@ -154,6 +188,7 @@ export async function getModuleBySlug(
         maxScore: true,
         order: true,
         chapterId: true,
+        agentId: true,
         requiredModules: {
           select: {
             module: {
@@ -294,4 +329,38 @@ export async function updateModuleChatHistory(
     where: { id: projectProgress.id },
     data: { chatHistory: [...moduleChatHistory, ...newMessages] },
   });
+}
+
+export async function updateModuleProgress({
+  moduleId,
+  score,
+  deliverable,
+}: {
+  moduleId: string;
+  score: number;
+  deliverable: string;
+}) {
+  try {
+    const selectedModule = await prisma.module.findUnique({
+      where: { id: moduleId },
+      select: { maxScore: true },
+    });
+    const projectId = await getProjectId();
+    if (!selectedModule || !projectId) throw new Error("Module not found");
+
+    const progress = await prisma.projectProgress.update({
+      where: { projectId_moduleId: { projectId, moduleId } },
+      data: {
+        score: score ?? undefined,
+        deliverable: deliverable ?? undefined,
+      },
+    });
+
+    revalidatePath("/dashboard");
+
+    return { success: true, progress };
+  } catch (error) {
+    console.error("Error updating module progress:", error);
+    return { success: false, message: "Failed to update module progress" };
+  }
 }

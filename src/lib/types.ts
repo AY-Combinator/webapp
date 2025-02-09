@@ -57,6 +57,7 @@ type ModuleData = {
   maxScore: number;
   order: number;
   score: number;
+  clickable: boolean;
   completed: boolean;
 };
 

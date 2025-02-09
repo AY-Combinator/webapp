@@ -22,6 +22,7 @@ const ModuleCard = ({
   completed,
   color,
   icon,
+  clickable,
 }: ModuleCardProps) => {
   const clampedPoints = Math.max(0, Math.min(score, maxScore));
   const progressValue = calculateProgressPercentage({
@@ -29,8 +30,14 @@ const ModuleCard = ({
     maxPoints: maxScore,
   });
   const pathname = usePathname();
+  const linkUrl = clickable ? `/module/${slug}` : "#";
   return (
-    <Link href={`/module/${slug}`} className="w-full">
+    <Link
+      href={linkUrl}
+      className={cn("w-full", {
+        "opacity-30": !clickable,
+      })}
+    >
       <div
         className={cn(
           "cursor-pointer border border-solid border-black/30 shadow-sm shadow-black/15 rounded-sm bg-accent-foreground p-1 flex flex-col gap-1 transition-all duration-200 ease-in-out",
