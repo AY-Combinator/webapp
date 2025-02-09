@@ -127,7 +127,6 @@ export async function getProjectId() {
 
 export async function isProjectBasicFilled() {
   const projectId = await getProjectId();
-
   if (!projectId) return false;
 
   const projectBasics = await prisma.project.findUnique({
@@ -139,13 +138,9 @@ export async function isProjectBasicFilled() {
     },
   });
 
-  if (
+  return !!(
     projectBasics?.title &&
     projectBasics.shortDescription &&
     projectBasics.longDescription
-  ) {
-    return true;
-  } else {
-    return false;
-  }
+  );
 }

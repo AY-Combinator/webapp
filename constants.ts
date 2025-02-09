@@ -1,1 +1,1 @@
-export const AUTHONOME_URL = "https://autonome.alt.technology/agent-ulhnps";
+export const AUTHONOME_URL = "https://autonome.alt.technology/agent-lqqwgl/agents'";
