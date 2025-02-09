@@ -16,6 +16,7 @@ const Chat = ({ data }: ChatProps) => {
       <div className="col-span-3 flex justify-center overflow-hidden">
         <Conversation
           chatHistory={data?.moduleProgress?.chatHistory || []}
+          // TODO: get agentId from module
           agentId={"68bb428e-a72b-0597-8645-9ae25612f932"}
           moduleId={data?.id || ""}
         />
