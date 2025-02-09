@@ -45,8 +45,50 @@ const FundingEvaluation = ({ userId }: FundingEvaluationProps) => {
     setMessages((prevMessages) => [...prevMessages, assistantMessage]);
   };
 
-  const addUserMessage = (message: Message) => {
-    setMessages([...messages, message]);
+
+  const addUserMessage = async (userMessage: Message) => {
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setIsResponseLoading(true);
+
+    console.log(userMessage);
+
+    try {
+      const response = await fetch(
+        `${AUTHONOME_URL}/${INVESTOR_AGENT_ID}/message`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${process.env.NEXT_PUBLIC_AUTHONOME_BASIC_AUTH_TOKEN}`,
+          },
+          body: JSON.stringify({
+            roomId: userId,
+            userId: "user",
+            userName: "User",
+            text: userMessage.content,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        setIsResponseLoading(false);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setIsResponseLoading(false);
+
+
+      const assistantMessage: Message = { role: "assistant", content: data[0].text };
+
+      setMessages((prevMessages) => [...prevMessages, assistantMessage]);
+
+      // await updateModuleChatHistory(moduleId, [userMessage, assistantMessage]);
+    } catch (error) {
+      console.error("Error:", error);
+      setIsResponseLoading(false);
+      // Handle error appropriately
+    }
   };
 
 

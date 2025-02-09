@@ -1,4 +1,5 @@
 export const AUTHONOME_URL = "https://autonome.alt.technology/agent-lqqwgl";
+// export const AUTHONOME_URL = "https://autonome.alt.technology/agent-vnxctd"; // v2
 export const POINTS_TO_UNLOCK_FUNDING = 1200;
 export const INVESTOR_AGENT_ID = "68bb428e-a72b-0597-8645-9ae25612f932"; //Venture Partner Agent
 export const MODULE_TO_AGENT_ID = {
